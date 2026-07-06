@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>root@portfolio ~ </title>
+    <meta name="description" content="Portfólio de Infraestrutura e Cibersegurança — projetos, certificações e automações.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ======================= TOPBAR ======================= -->
+    <header class="termbar">
+        <div class="termbar-inner">
+            <div style="display:flex; align-items:center; gap:16px;">
+                <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+                <div class="termbar-title">root@portfolio:~<span class="blinker"></span></div>
+            </div>
+            <nav class="navlinks" id="navlinks">
+                <a href="#sobre">sobre</a>
+                <a href="#experiencia">experiencia</a>
+                <a href="#certificacoes">certificacoes</a>
+                <a href="#projetos">projetos</a>
+                <a href="#terminal">terminal</a>
+                <a href="#contato">contato</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">≡</button>
+        </div>
+    </header>
+
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" id="topo">
+        <div class="hero-grid-bg"></div>
+        <div class="wrap">
+            <div class="boot-log">
+                <div><span>[ OK ]</span> conexão estabelecida com portfolio.local</div>
+                <div><span>[ OK ]</span> carregando perfil de usuário...</div>
+                <div><span>[ OK ]</span> permissões: visitante &gt; leitura concedida</div>
+                <div><span>[ OK ]</span> iniciando interface...</div>
+            </div>
+
+            <span class="hero-eyebrow">sessão iniciada</span>
+
+            <h1>Jorge <span class="accent">Vieira</span></h1>
+            <div class="hero-handle"><span class="at">@</span>jorgevieirah</div>
+
+            <div class="typewrap">
+                <span class="prompt">visitante@portfolio:~$</span> whoami<br>
+                <span id="typed-role"></span><span class="caret"></span>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#projetos" class="btn btn-primary">ver projetos</a>
+                <a href="#contato" class="btn btn-ghost">&gt; entrar em contato</a>
+            </div>
+        </div>
+
+        <div class="scroll-cue"><span>scroll</span><div class="bar"></div></div>
+    </section>
+
+    <!-- ======================= SOBRE MIM ======================= -->
+    <section class="about reveal" id="sobre">
+        <div class="wrap">
+            
+            <div class="sec-head-terminal">
+                <div class="terminal-prompt-line">
+                    <span class="prompt">visitante@portfolio:~$</span>
+                    <span class="run-command">cat sobre_mim.md</span>
+                </div>
+            </div>
+
+            <div class="about-grid">
+                <div class="profile-card">
+                    <div class="pc-bar">
+                        <span class="dot r" style="width:8px;height:8px;"></span>
+                        <span class="dot y" style="width:8px;height:8px;"></span>
+                        <span class="dot g" style="width:8px;height:8px;"></span>
+                        <span class="f">perfil.json</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-row"><span class="pc-key">nome</span><span class="pc-val">Jorge Vieira</span></div>
+                        <div class="pc-row"><span class="pc-key">formação</span><span class="pc-val">Análise e Desenvolvimento de Sistemas</span></div>
+                        <div class="pc-row"><span class="pc-key">foco atual</span><span class="pc-val green">Cibersegurança</span></div>
+                        <div class="pc-row"><span class="pc-key">stack</span><span class="pc-val">Python · Linux · Redes</span></div>
+                        <div class="pc-row"><span class="pc-key">localização</span><span class="pc-val">Manaus, AM — Brasil</span></div>
+                        <div class="pc-row"><span class="pc-key">status</span><span class="pc-val amber">Disponível para desafios</span></div>
+                        <div class="status-line"><span class="status-dot"></span> online agora</div>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <p>
+                        Sou profissional de TI atuando na área de <strong>Infraestrutura</strong> e graduando em <strong>Análise e Desenvolvimento de Sistemas</strong>. Encaro a tecnologia com uma sede inesgotável por conhecimento; por mais que eu já tenha vivência resolvendo problemas reais no dia a dia corporativo, mantenho sempre a postura de um eterno estudante, com a missão de aplicar uma vontade constante de aprender.
+                    </p>
+                    <p>
+                        Minha trajetória combina a prática do suporte com um mergulho profundo na <span class="hl">Cibersegurança Defensiva</span> e na análise de redes. Utilizo <strong>Python</strong> como aliado para automatizar tarefas complexas e criar scripts de filtragem de logs. Além disso, aplico meus conhecimentos em laboratórios práticos, desenhando e simulando arquiteturas de redes seguras.
+                    </p>
+                    <p>
+                        Sou entusiasta de hardware de alto desempenho e possuo grande curiosidade pelo ecossistema <strong>Linux</strong>. Atualmente, estou desbravando o <strong>Fedora</strong> e aprendendo a dominar o <strong>Arch Linux</strong>. Gosto de "quebrar a cabeça" customizando meus próprios ambientes e gerenciadores de janelas, tarefas e aplicações. Esse processo de entender a fundo como o sistema opera reflete o meu foco principal: a evolução contínua.
+                    </p>
+
+                    <div class="skills-block">
+                        <h3>Stack &amp; ferramentas</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Linux (Fedora/Arch)</span>
+                            <span class="tag">Git &amp; GitHub</span>
+                            <span class="tag">Active Directory</span>
+                            <span class="tag amber">Cibersegurança</span>
+                            <span class="tag amber">Ethical Hacking</span>
+                            <span class="tag amber">Redes (Cisco Packet Tracer)</span>
+                            <span class="tag">Análise de Logs</span>
+                            <span class="tag">Automação de Infraestrutura</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= EXPERIÊNCIA / CARREIRA ======================= -->
+    <section id="experiencia" class="reveal">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="sec-tag">02 — trajetória</span>
+                <h2 class="sec-title">Experiência & Formação</h2>
+                <p class="sec-sub">cat history.log — log de operações corporativas e evolução profissional.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Item 1: Cargo atual -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Atualmente</span>
+                        <h3 class="timeline-title">Assistente de Infraestrutura</h3>
+                        <div class="timeline-meta">Suporte Nível Brasil & Unidade Região Norte</div>
+                        <p>
+                            Atuação como único ponto de suporte local da unidade da região Norte, gerenciando paralelamente demandas corporativas a nível nacional. Responsável pela estabilidade da infraestrutura, redes e permissões em Active Directory. Movido pela missão de <strong>aprender continuamente</strong> e agregar valor através da tecnologia, estando sempre aberto a novos e complexos desafios.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Formação -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--amber); box-shadow: 0 0 8px var(--amber);"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Reta Final</span>
+                        <h3 class="timeline-title">Análise e Desenvolvimento de Sistemas (ADS)</h3>
+                        <div class="timeline-meta">Graduação Tecnológica</div>
+                        <p>
+                            Construção de base sólida em lógica e engenharia de software. Aplicação ativa dos conhecimentos acadêmicos no desenvolvimento de scripts e automações (Python), unindo o desenvolvimento de código com as necessidades diárias de infraestrutura e cibersegurança defensiva.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= CERTIFICAÇÕES ======================= -->
+    <section class="certs reveal" id="certificacoes">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="sec-tag">03 — credenciais</span>
+                <h2 class="sec-title">Certificações &amp; Insígnias</h2>
+                <p class="sec-sub">cat certificados.log — registros validados de conquistas e trilhas concluídas.</p>
+            </div>
+
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-top">
+                        <div class="cert-badge">
+                            <img src="assets/img/google-cyber.png" alt="Insígnia Google Cybersecurity">
+                        </div>
+                        <span class="cert-status">verificado</span>
+                    </div>
+                    <h3>Google Cybersecurity Professional Certificate</h3>
+                    <div class="cert-issuer">Google — Coursera</div>
+                    <div class="cert-meta"><span>Credencial Profissional</span><span>2025</span></div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-top">
+                        <div class="cert-badge">
+                            <img src="assets/img/cisco-hacker.png" alt="Insígnia Cisco Ethical Hacker">
+                        </div>
+                        <span class="cert-status">verificado</span>
+                    </div>
+                    <h3>Maratona de Hacking Ético</h3>
+                    <div class="cert-issuer">Cisco Networking Academy</div>
+                    <div class="cert-meta"><span>insígnia + certificado</span><span>2026</span></div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-top">
+                        <div class="cert-badge">
+                            <img src="assets/img/cisco-intro.png" alt="Insígnia Cisco Introduction to Cybersecurity">
+                        </div>
+                        <span class="cert-status">verificado</span>
+                    </div>
+                    <h3>Introduction to Cybersecurity & Networks</h3>
+                    <div class="cert-issuer">Cisco Networking Academy</div>
+                    <div class="cert-meta"><span>certificado</span><span>2026</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= PROJETOS ======================= -->
+    <section id="projetos" class="reveal">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="sec-tag">04 — repositório</span>
+                <h2 class="sec-title">Projetos</h2>
+                <p class="sec-sub">ls -la ./projetos — ferramentas e simulações desenvolvidas dinamicamente.</p>
+            </div>
+
+            <div class="projects-toolbar">
+                <button class="filter-btn active" data-filter="all">todos</button>
+                <button class="filter-btn" data-filter="python">python</button>
+                <button class="filter-btn" data-filter="javascript">javascript</button>
+                <button class="filter-btn" data-filter="shell">shell</button>
+            </div>
+
+            <div class="proj-grid" id="projGrid">
+                <div id="repo-loader" class="ln" style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 2rem 0;">
+                    <span class="p">$</span> buscando repositórios remotos via api.github.com...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= TERMINAL INTERATIVO ======================= -->
+    <section class="term-section reveal" id="terminal">
+        <div class="wrap">
+            <div class="sec-head" style="text-align:center;">
+                <span class="sec-tag">05 — interativo</span>
+                <h2 class="sec-title">Terminal ao vivo</h2>
+                <p class="sec-sub" style="margin:10px auto 0;">Digite comandos reais para explorar mais sobre mim. Comece com <code style="color:var(--green-dim);">help</code>.</p>
+            </div>
+
+            <div class="live-term">
+                <div class="live-term-bar">
+                    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                    <span class="lt-title">visitante@portfolio</span>
+                </div>
+                <div class="live-term-body" id="termBody">
+                    <div class="ln"><span class="p">visitante@portfolio:~$</span> <span class="out">Bem-vindo(a). Digite <span class="ok">help</span> para ver os comandos disponíveis.</span></div>
+                </div>
+                <form class="live-term-form" id="termForm">
+                    <span class="p">$</span>
+                    <input type="text" id="termInput" autocomplete="off" placeholder="digite um comando..." aria-label="Campo de comando do terminal">
+                </form>
+            </div>
+            <p class="term-hint">tente: <code>help</code> · <code>sobre</code> · <code>skills</code> · <code>certificados</code> · <code>clear</code></p>
+        </div>
+    </section>
+
+    <!-- ======================= CONTATO (Apenas Botões) ======================= -->
+    <section id="contato" class="reveal">
+        <div class="wrap">
+            <div class="sec-head" style="text-align: center;">
+                <span class="sec-tag">06 — conexão</span>
+                <h2 class="sec-title">Contato</h2>
+                <p class="sec-sub" style="margin: 10px auto 0;">Vamos conversar sobre infraestrutura, segurança ou automação. Escolha um canal abaixo:</p>
+            </div>
+
+            <div class="contact-grid">
+                <a class="contact-item" href="mailto:jorgevieirah.contato@gmail.com">
+                    <div class="ci-icon">✉️</div>
+                    <div><div class="ci-label">email</div><div class="ci-value">jorgevieirah.contato@gmail.com</div></div>
+                </a>
+                <a class="contact-item" href="https://www.linkedin.com/in/jorge-vieira-73728a214" target="_blank" rel="noopener">
+                    <div class="ci-icon">in</div>
+                    <div><div class="ci-label">linkedin</div><div class="ci-value">linkedin.com/in/jorge-vieira</div></div>
+                </a>
+                <a class="contact-item" href="https://github.com/JorgeVieirah" target="_blank" rel="noopener">
+                    <div class="ci-icon">⌥</div>
+                    <div><div class="ci-label">github</div><div class="ci-value">github.com/JorgeVieirah</div></div>
+                </a>
+                <div class="contact-item" style="cursor:default;">
+                    <div class="ci-icon">📍</div>
+                    <div><div class="ci-label">localização</div><div class="ci-value">Manaus, AM — Brasil</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer>
+        <div class="wrap">
+            <div class="fline"><span class="green">$</span> echo "feito com código limpo e foco em performance"</div>
+            <div class="fline">© <span id="year"></span> Jorge Vieira — todos os direitos reservados</div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
