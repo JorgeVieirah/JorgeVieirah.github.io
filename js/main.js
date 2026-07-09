@@ -27,6 +27,12 @@ window.addEventListener('scroll', () => {
     const top = sec.offsetTop - 120;
     if (window.scrollY >= top) current = sec.getAttribute('id');
   });
+
+  // CORREÇÃO: Força a ativação da última aba quando o usuário rolar até o limite do fundo da página
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+    current = 'contato';
+  }
+
   navAnchors.forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
@@ -42,7 +48,7 @@ const skillsBlock = document.querySelector('.skills-block');
 // 1. Salva o texto original com as tags HTML
 const originalParagraphsHTML = Array.from(aboutParagraphs).map(p => p.innerHTML);
 
-// 2. CORREÇÃO: Limpa todos os parágrafos imediatamente no carregamento da página
+// 2. Limpa todos os parágrafos imediatamente no carregamento da página
 aboutParagraphs.forEach(p => p.innerHTML = "");
 
 let typingTimeouts = [];
@@ -236,11 +242,13 @@ const commands = {
     <span class="ok">skills</span> — stack de ferramentas e tecnologias<br>
     <span class="ok">certificados</span> — credenciais de segurança e redes<br>
     <span class="ok">projetos</span> — rolar até a galeria de projetos<br>
+    <span class="ok">contato</span> — exibir formas de contato<br>
     <span class="ok">clear</span> — limpar o histórico do terminal`,
   sobre: () => `<span class="out">Jorge Vieira. Profissional de Infraestrutura de TI e graduando em ADS. Especialização focada em Blue Team, análise de logs e automação com scripts Python.</span>`,
   skills: () => `<span class="out">Python · Linux (Fedora/Arch) · Git/GitHub · Active Directory · Redes Cisco · Cybersecurity · Log Parsing</span>`,
   certificados: () => `<span class="out">Google Cybersecurity Professional Certificate · Cisco Networking Academy (Hacking Ético / Introdução a Redes)</span>`,
   projetos: () => { document.getElementById('projetos').scrollIntoView({behavior:'smooth'}); return `<span class="out">Navegando até ./projetos...</span>`; },
+  contato: () => { document.getElementById('contato').scrollIntoView({behavior:'smooth'}); return `<span class="out">Iniciando protocolo de conexão... navegando até ./contato</span>`; },
   clear: () => { termBody.innerHTML = ''; return null; },
 };
 

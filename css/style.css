@@ -272,15 +272,125 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex; flex-direction: column; align-items: center; gap: 8px;
   opacity: 0; animation: fadeUp .6s ease forwards 2s;
 }
+
+/* O trilho translúcido */
 .scroll-cue .bar {
-  width: 1px; height: 34px; background: linear-gradient(var(--green), transparent);
-  animation: scrollPulse 1.6s ease-in-out infinite;
+  width: 2px;
+  height: 46px;
+  background: rgba(57, 255, 122, 0.08);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
 }
-@keyframes scrollPulse { 
-  0% { transform: scaleY(0); transform-origin: top; } 
-  50% { transform: scaleY(1); transform-origin: top; } 
-  51% { transform-origin: bottom; } 
-  100% { transform: scaleY(0); transform-origin: bottom; } 
+
+/* A gota / fluxo de água */
+.scroll-cue .bar::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--green), transparent);
+  animation: liquidFlow 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+/* A física da queda */
+@keyframes liquidFlow {
+  0% { top: -40px; }
+  100% { top: 100%; }
+}
+
+/* ============================================================
+   HERO - LAYOUT DE DUAS COLUNAS E NEOFETCH
+   ============================================================ */
+.hero-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+}
+
+.hero-text-side {
+  flex: 1;
+  max-width: 580px;
+}
+
+.hero-graphic-side {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  /* Animação para aparecer suavemente após os textos */
+  opacity: 0; 
+  animation: fadeUp .6s ease forwards 1.8s; 
+}
+
+/* Card Neofetch */
+.neofetch-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  font-family: var(--mono);
+}
+
+.nf-bar {
+  display: flex; align-items: center; gap: 7px;
+  padding: 10px 14px; border-bottom: 1px solid var(--line);
+  background: var(--panel-2); font-size: 11px; color: var(--text-dim);
+}
+.nf-bar .nf-title { margin-left: auto; }
+
+.nf-body {
+  padding: 24px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nf-ascii {
+  color: var(--green);
+  font-weight: bold;
+}
+.nf-ascii pre {
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.nf-info {
+  font-size: 13px;
+  color: var(--text);
+  flex: 1;
+}
+
+.nf-user {
+  color: var(--green);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.nf-divider {
+  color: var(--text-faint);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nf-row { margin-bottom: 5px; }
+.nf-key { color: var(--green); font-weight: bold; }
+
+.nf-colors {
+  display: flex; gap: 6px; margin-top: 14px;
+}
+.nf-colors span {
+  display: inline-block; width: 14px; height: 14px; border-radius: 2px;
 }
 
 /* ============================================================
@@ -325,7 +435,8 @@ section { padding: 110px 0; position: relative; }
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease 1.5s, transform 0.6s ease 1.5s;
-
+  
+  /* Efeito flutuante */
   position: sticky;
   top: 130px;
 }
@@ -601,6 +712,9 @@ section { padding: 110px 0; position: relative; }
 /* ============================================================
    TERMINAL INTERATIVO
    ============================================================ */
+.term-section { 
+  background: var(--bg-alt); 
+}
 .live-term {
   background: #070a0b; border: 1px solid var(--line); border-radius: 6px;
   max-width: 760px; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,.5);
@@ -677,21 +791,32 @@ footer .fline .green { color: var(--green-dim); }
 /* ============================================================
    REGRAS DE RESPONSIVIDADE E CORREÇÃO DE VIEWPORT (MOBILE)
    ============================================================ */
+@media (max-width: 960px) {
+  .hero-content-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .hero-graphic-side {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .neofetch-card { max-width: 100%; }
+}
+
 @media (max-width: 820px) {
   .about-grid {
     grid-template-columns: 1fr !important; 
     gap: 32px;
   }
-
   .profile-card {
     width: 100%;
+    position: static; /* Remove o sticky no mobile */
   }
-
   .terminal-prompt-line {
     font-size: 14px;
     flex-wrap: wrap; 
   }
-
   .run-command {
     white-space: normal; 
     width: auto !important;
@@ -701,5 +826,10 @@ footer .fline .green { color: var(--green-dim); }
 }
 
 @media (max-width: 760px) {
-  .hero-content h1 { font-size: 2.5rem; }
+  .hero h1 { font-size: 2.5rem; }
 }
+
+@media (max-width: 480px) {
+  .nf-body { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
