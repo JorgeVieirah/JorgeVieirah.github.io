@@ -206,7 +206,7 @@ const commands = {
   clear: () => { termBody.innerHTML = ''; return null; },
 };
 
-commands['sudo hire-me'] = () => `<span class="warn">[sudo]</span> <span class="out">permissão concedida. Use os links da seção de contato para formalizar a proposta  para formalizar a proposta! 🚀</span>gt;_</span>`;
+commands['sudo hire-me'] = () => `<span class="warn">[sudo]</span> <span class="out">permissão concedida. Use os links da seção de contato para formalizar a proposta &gt;_</span>`;
 commands['rm -rf /'] = () => `<span class="warn">nice try.</span> <span class="out">princípio do privilégio mínimo ativo ;)</span>`;
 
 termForm.addEventListener('submit', (e) => {
