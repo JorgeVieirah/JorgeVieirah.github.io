@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>root@portfolio ~ </title>
-    <meta name="description" content="Portfólio de Infraestrutura e Cibersegurança — projetos, certificações e automações.">
+    <title>Jorge Vieira — Infraestrutura, Segurança &amp; IA</title>
+    <meta name="description" content="Portfólio de Jorge Vieira: infraestrutura de TI, cibersegurança e IA aplicada à segurança. Pesquisa PIBITI em detecção de exfiltração de dados e proteção de dados sensíveis (LGPD). Manaus, AM.">
+    <meta property="og:title" content="Jorge Vieira — Infraestrutura, Segurança & IA">
+    <meta property="og:description" content="Infraestrutura de TI, cibersegurança e IA aplicada à segurança. Manaus, AM.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jorgevieirah.github.io/">
+    <meta name="theme-color" content="#0a0e0f">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -17,13 +22,14 @@
         <div class="termbar-inner">
             <div style="display:flex; align-items:center; gap:16px;">
                 <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
-                <div class="termbar-title">root@portfolio:~<span class="blinker"></span></div>
+                <div class="termbar-title">jorge@arch:~<span class="blinker"></span></div>
             </div>
             <nav class="navlinks" id="navlinks">
                 <a href="#sobre">sobre</a>
+                <a href="#pesquisa">pesquisa</a>
                 <a href="#experiencia">experiencia</a>
-                <a href="#certificacoes">certificacoes</a>
                 <a href="#projetos">projetos</a>
+                <a href="#certificacoes">certificacoes</a>
                 <a href="#terminal">terminal</a>
                 <a href="#contato">contato</a>
             </nav>
@@ -34,21 +40,21 @@
     <!-- ======================= HERO ======================= -->
     <section class="hero" id="topo">
         <div class="hero-grid-bg"></div>
-        
+
         <div class="wrap hero-content-wrapper">
-            
+
             <div class="hero-text-side">
                 <div class="boot-log">
-                    <div><span>[ OK ]</span> conexão estabelecida com portfolio.local</div>
-                    <div><span>[ OK ]</span> carregando perfil de usuário...</div>
-                    <div><span>[ OK ]</span> permissões: visitante &gt; leitura concedida</div>
-                    <div><span>[ OK ]</span> iniciando interface...</div>
+                    <div><span>[ OK ]</span> montando /home/jorge ...</div>
+                    <div><span>[ OK ]</span> iniciando serviço: blue-team.service</div>
+                    <div><span>[ OK ]</span> carregando modelo: autoencoder.pt</div>
+                    <div><span>[ OK ]</span> sessão pronta — bem-vindo(a)</div>
                 </div>
 
-                <span class="hero-eyebrow">sessão iniciada</span>
+                <span class="hero-eyebrow">infra · segurança · ia</span>
 
                 <h1>Jorge <span class="accent">Vieira</span></h1>
-                <div class="hero-handle"><span class="at">@</span>jorgevieirah</div>
+                <div class="hero-handle"><span class="at">@</span>jorgevieirah <span class="hero-loc">· Manaus, AM</span></div>
 
                 <div class="typewrap">
                     <span class="prompt">visitante@portfolio:~$</span> whoami<br>
@@ -56,8 +62,8 @@
                 </div>
 
                 <div class="hero-cta">
-                    <a href="#projetos" class="btn btn-primary">ver projetos</a>
-                    <a href="#contato" class="btn btn-ghost">&gt; entrar em contato</a>
+                    <a href="#pesquisa" class="btn btn-primary">ver pesquisa</a>
+                    <a href="#projetos" class="btn btn-ghost">&gt; projetos</a>
                 </div>
             </div>
 
@@ -70,37 +76,38 @@
                     <div class="nf-body">
                         <div class="nf-ascii">
 <pre>
-   /\
-  /  \
- /_\/_\
- ▄▄▄▄▄▄
-███▄▄███
-██ ▀▀ ██
+       /\
+      /  \
+     /\   \
+    /  __  \
+   /  (  )  \
+  / __|  |__\
+ /.`        `.\
 </pre>
                         </div>
                         <div class="nf-info">
-                            <div class="nf-user">user@portfolio</div>
+                            <div class="nf-user">jorge@arch</div>
                             <div class="nf-divider">----------------------</div>
                             <div class="nf-row"><span class="nf-key">OS</span>: <span class="nf-val">Arch Linux x86_64</span></div>
-                            <div class="nf-row"><span class="nf-key">Host</span>: <span class="nf-val">Dellys / Norte</span></div>
-                            <div class="nf-row"><span class="nf-key">Shell</span>: <span class="nf-val">zsh 5.9</span></div>
-                            <div class="nf-row"><span class="nf-key">Role</span>: <span class="nf-val">Infra & SecOps</span></div>
+                            <div class="nf-row"><span class="nf-key">Shell</span>: <span class="nf-val">zsh</span></div>
+                            <div class="nf-row"><span class="nf-key">Role</span>: <span class="nf-val">Infra &amp; SecOps</span></div>
+                            <div class="nf-row"><span class="nf-key">Research</span>: <span class="nf-val">IA p/ detecção de exfiltração</span></div>
                             <div class="nf-row"><span class="nf-key">Uptime</span>: <span class="nf-val">3+ anos em TI</span></div>
-                            <div class="nf-row"><span class="nf-key">Pkgs</span>: <span class="nf-val">Python · Linux · Cisco</span></div>
-                            
+                            <div class="nf-row"><span class="nf-key">Pkgs</span>: <span class="nf-val">Python · PyTorch · Scapy · AD</span></div>
+
                             <div class="nf-colors">
                                 <span style="background: #10161a;"></span>
                                 <span style="background: #ff5f57;"></span>
                                 <span style="background: #39ff7a;"></span>
                                 <span style="background: #ffb454;"></span>
                                 <span style="background: #58c4ff;"></span>
-                                <span style="background: #c8d3d5;"></span>
+                                <span style="background: #b48cff;"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="scroll-cue"><span>scroll</span><div class="bar"></div></div>
     </section>
@@ -108,7 +115,7 @@
     <!-- ======================= SOBRE MIM ======================= -->
     <section class="about reveal" id="sobre">
         <div class="wrap">
-            
+
             <div class="sec-head-terminal">
                 <div class="terminal-prompt-line">
                     <span class="prompt">visitante@portfolio:~$</span>
@@ -127,42 +134,137 @@
                     <div class="pc-body">
                         <div class="pc-row"><span class="pc-key">nome</span><span class="pc-val">Jorge Vieira</span></div>
                         <div class="pc-row"><span class="pc-key">formação</span><span class="pc-val">Análise e Desenvolvimento de Sistemas</span></div>
-                        <div class="pc-row"><span class="pc-key">foco atual</span><span class="pc-val green">Infraestrutura Segura & Suporte</span></div>
-                        <div class="pc-row"><span class="pc-key">stack</span><span class="pc-val">Python · Linux · Redes · Hardware</span></div>
+                        <div class="pc-row"><span class="pc-key">atuação</span><span class="pc-val">Assistente de Infraestrutura</span></div>
+                        <div class="pc-row"><span class="pc-key">pesquisa</span><span class="pc-val violet">IA aplicada à segurança (PIBITI)</span></div>
+                        <div class="pc-row"><span class="pc-key">foco</span><span class="pc-val green">Infra · Segurança · IA</span></div>
                         <div class="pc-row"><span class="pc-key">localização</span><span class="pc-val">Manaus, AM — Brasil</span></div>
-                        <div class="pc-row"><span class="pc-key">status</span><span class="pc-val amber">Missão de aprendizado constante</span></div>
-                        <div class="status-line"><span class="status-dot"></span> online agora</div>
+                        <div class="pc-row"><span class="pc-key">status</span><span class="pc-val amber">aprendendo enquanto construo</span></div>
+                        <div class="status-line"><span class="status-dot"></span> aberto a oportunidades</div>
                     </div>
                 </div>
 
                 <div class="about-text">
                     <p>
-                        Sou um profissional e universitário de TI, atualmente trabalhando na área de <strong>Infraestrutura e Suporte</strong>, responsável por garantir a estabilidade e o fluxo das operações diárias.
+                        Sou profissional de <strong>Infraestrutura de TI</strong> e formando em Análise e Desenvolvimento de Sistemas. No dia a dia, cuido da gestão de identidades e acessos no Active Directory, do monitoramento de redes com Cisco Meraki, da gestão de endpoints e do suporte técnico em nível nacional.
                     </p>
                     <p>
-                        Possuo uma bagagem técnica construída em minhas vivências reais no mundo corporativo, como na resolução de problemas envolvendo hardware, redes corporativas e gestão de acessos. Tenho um perfil naturalmente analítico e gosto de ir além da superfície para entender como os sistemas se comunicam em suas camadas mais profundas. Na prática, traduzo essa investigação e análise criando scripts em <strong>Python</strong> para automatizar fluxos de trabalho, varrer logs complexos e filtrar dados, substituindo o esforço manual por processos mais rápidos e inteligentes.
+                        Fora do expediente, estudo <span class="hl">cibersegurança</span> e monto laboratórios para testar na prática: captura e análise de tráfego, detecção de intrusão e análise de logs. Uso <strong>Linux</strong> como sistema principal (Arch e Fedora) e aplico <strong>Python</strong> para automatizar o que é repetitivo.
                     </p>
                     <p>
-                        Acredito que o aprendizado real acontece nos bastidores, longe das facilidades dos sistemas pré-configurados. No meu dia a dia, mantenho uma máquina voltada exclusivamente para estudos, servindo como um ambiente seguro para testar lógicas e arquiteturas. Desbravar o <strong>Arch Linux</strong>, o <strong>Fedora</strong> ou qualquer que seja a distro ou sistema operacional, buscando sempre entender detalhadamente como cada pacote e processo interage no sistema, é a minha melhor forma de exercitar a curiosidade técnica. Levo esse processo metódico de experimentação para a minha rotina profissional: nunca presumir que sei tudo, mas sempre testar, validar e melhorar.
+                        Hoje meu foco está na interseção entre segurança e <span class="hl-violet">inteligência artificial</span>. Na minha iniciação tecnológica (PIBITI), desenvolvo um protótipo de baixo custo que usa <strong>Autoencoders</strong> e <strong>NLP</strong> para detectar exfiltração e proteger dados sensíveis em organizações da sociedade civil, com foco na LGPD.
                     </p>
                     <p>
-                        Concluindo minha formação em <strong>Análise e Desenvolvimento de Sistemas</strong>, consolido meu caminho na interseção entre suporte e segurança. Meu mergulho na <span class="hl">Cibersegurança</span> transformou a maneira como atendo cada demanda de infraestrutura: hoje, aplico nativamente a mentalidade <em>Security-First</em> em tudo o que configuro.
+                        Sou iniciante em muita coisa e não escondo isso: aprendo construindo, documento o caminho e gosto de entender como os sistemas funcionam por baixo.
                     </p>
 
                     <div class="skills-block">
-                        <h3>Stack &amp; ferramentas</h3>
-                        <div class="skill-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Linux (Fedora/Arch)</span>
-                            <span class="tag">Git &amp; GitHub</span>
-                            <span class="tag">Active Directory</span>
-                            <span class="tag amber">Cibersegurança</span>
-                            <span class="tag amber">Ethical Hacking</span>
-                            <span class="tag amber">Redes (Cisco Packet Tracer)</span>
-                            <span class="tag">Análise de Logs</span>
-                            <span class="tag amber">IAM</span>
-                            <span class="tag">Troubleshooting & Hardware</span>
-                            <span class="tag">Automação & Infraestrutura</span>
+                        <div class="skill-group">
+                            <h3><span class="sg-dot green"></span>infra &amp; linux</h3>
+                            <div class="skill-tags">
+                                <span class="tag">Linux (Arch / Fedora)</span>
+                                <span class="tag">Active Directory / IAM</span>
+                                <span class="tag">Cisco Meraki</span>
+                                <span class="tag">Redes TCP/IP</span>
+                                <span class="tag">UEM / MDM</span>
+                                <span class="tag">Git &amp; GitHub</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h3><span class="sg-dot amber"></span>segurança</h3>
+                            <div class="skill-tags">
+                                <span class="tag amber">Wireshark</span>
+                                <span class="tag amber">Nmap</span>
+                                <span class="tag amber">Suricata</span>
+                                <span class="tag amber">Splunk / SIEM</span>
+                                <span class="tag amber">Hardening</span>
+                                <span class="tag amber">LGPD</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h3><span class="sg-dot violet"></span>ia &amp; dados</h3>
+                            <div class="skill-tags">
+                                <span class="tag violet">Python</span>
+                                <span class="tag violet">PyTorch</span>
+                                <span class="tag violet">scikit-learn</span>
+                                <span class="tag violet">Hugging Face / BERTimbau</span>
+                                <span class="tag violet">pandas</span>
+                                <span class="tag violet">Scapy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= PESQUISA ======================= -->
+    <section id="pesquisa" class="research reveal">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="sec-tag">02 — pesquisa</span>
+                <h2 class="sec-title">IA contra vazamento de dados</h2>
+                <p class="sec-sub">PIBITI · Iniciação Tecnológica · Centro Universitário Martha Falcão Wyden · ago/2026 – jul/2027</p>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-text">
+                    <p class="rs-lead">
+                        Organizações da sociedade civil de Manaus lidam com dados sensíveis de pessoas em situação de vulnerabilidade, estão sujeitas à LGPD e raramente têm orçamento para ferramentas de segurança comerciais.
+                    </p>
+                    <p>
+                        A pesquisa propõe um <strong>protótipo open source e de baixo custo</strong> que combina duas frentes: um <strong>Autoencoder</strong> que aprende o comportamento normal do tráfego e sinaliza desvios (possíveis exfiltrações), e um módulo de <strong>NLP</strong> que identifica dados pessoais pelo contexto, indo além de regras simples como "procurar um CPF".
+                    </p>
+                    <p>
+                        A avaliação compara modelos tradicionais de detecção de anomalias com deep learning, medindo precisão, recall e latência em hardware local.
+                    </p>
+                    <div class="rs-meta">
+                        <span>orientação: Profª Danielle Lima de Figueiredo</span>
+                        <span>linha: Segurança Cibernética</span>
+                    </div>
+                    <div class="proj-links rs-links">
+                        <a href="https://github.com/JorgeVieirah/pibiti-pibid-osc" target="_blank" rel="noopener">↗ repositório</a>
+                    </div>
+                </div>
+
+                <div class="pipeline-card" aria-label="Arquitetura do protótipo">
+                    <div class="nf-bar">
+                        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                        <span class="nf-title">pipeline.yaml</span>
+                    </div>
+                    <div class="pipeline-body">
+                        <div class="lane">
+                            <div class="lane-label">tráfego de rede</div>
+                            <div class="lane-steps">
+                                <span class="step">.pcap</span><span class="arrow">→</span>
+                                <span class="step">scapy · features</span><span class="arrow">→</span>
+                                <span class="step violet">autoencoder</span><span class="arrow">→</span>
+                                <span class="step">score de anomalia</span>
+                            </div>
+                        </div>
+                        <div class="lane">
+                            <div class="lane-label">conteúdo</div>
+                            <div class="lane-steps">
+                                <span class="step">payload / texto</span><span class="arrow">→</span>
+                                <span class="step">regex</span><span class="arrow">+</span>
+                                <span class="step violet">NLP (BERTimbau)</span><span class="arrow">→</span>
+                                <span class="step">dados pessoais</span>
+                            </div>
+                        </div>
+                        <div class="lane merge">
+                            <span class="arrow">↘ ↙</span>
+                            <span class="step alert">alerta de possível exfiltração (LGPD)</span>
+                        </div>
+
+                        <div class="roadmap">
+                            <div class="roadmap-title"># cronograma</div>
+                            <ol class="roadmap-steps">
+                                <li class="done"><span>ago–set</span>laboratório e revisão</li>
+                                <li class="current"><span>out–nov</span>dados &amp; NLP</li>
+                                <li><span>dez–jan</span>autoencoder</li>
+                                <li><span>fev–mar</span>testes de exfiltração</li>
+                                <li><span>abr–mai</span>análise comparativa</li>
+                                <li><span>jun–jul</span>relatório final</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
@@ -174,57 +276,64 @@
     <section id="experiencia" class="reveal">
         <div class="wrap">
             <div class="sec-head">
-                <span class="sec-tag">02 — trajetória</span>
-                <h2 class="sec-title">Experiência & Formação</h2>
-                <p class="sec-sub">cat history.log — log de operações corporativas e evolução profissional.</p>
+                <span class="sec-tag">03 — trajetória</span>
+                <h2 class="sec-title">Experiência &amp; Formação</h2>
+                <p class="sec-sub">cat history.log — operações corporativas, pesquisa e formação.</p>
             </div>
 
             <div class="timeline">
-                <!-- Item 1: Cargo atual -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">[Out/2024] - Atualmente</span>
+                        <span class="timeline-date">[Out/2024] – Atualmente</span>
                         <h3 class="timeline-title">Assistente de Infraestrutura</h3>
-                        <div class="timeline-meta">Dellys | Suporte Nível Brasil & Unidade Região Norte</div>
+                        <div class="timeline-meta">Delly's | Suporte em nível nacional &amp; unidade Região Norte</div>
                         <p>
-                            Atuação como único ponto de suporte local da unidade da região Norte, gerenciando paralelamente demandas corporativas a nível nacional. Principais atuações:
+                            Único ponto de suporte local da unidade da Região Norte, atendendo também demandas corporativas em nível nacional.
                         </p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li style="margin-bottom: 5px;"><strong>Identidade e Segurança (IAM):</strong> Gestão de permissões no Active Directory com foco em conformidade e privilégio mínimo.</li>
-                            <li style="margin-bottom: 5px;"><strong>Redes e Conectividade:</strong> Monitoramento contínuo via ecossistema <strong>Cisco Meraki</strong> e gestão de clientes VPN.</li>
-                            <li><strong>Gestão de Ativos e Operações:</strong> Deploy padronizado de hardware e resolução ágil de chamados utilizando soluções de UEM.</li>
+                        <ul class="tl-list">
+                            <li><strong>Identidade e acessos (IAM):</strong> administração de usuários, grupos e permissões no Active Directory, com foco em conformidade e privilégio mínimo.</li>
+                            <li><strong>Redes e conectividade:</strong> monitoramento de redes e servidores locais com Cisco Meraki e suporte a clientes VPN (FortiClient).</li>
+                            <li><strong>Endpoints e ativos:</strong> deploy padronizado de desktops, notebooks e dispositivos móveis com solução de UEM e gestão do inventário de hardware.</li>
+                            <li><strong>Automação:</strong> ferramentas internas em Python para gestão de dispositivos e geração de termos de responsabilidade.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Item 1: Cargo Aprendiz TI -->
+                <div class="timeline-item">
+                    <div class="timeline-dot violet"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">[Ago/2026] – Atualmente</span>
+                        <h3 class="timeline-title">Pesquisador de Iniciação Tecnológica (PIBITI)</h3>
+                        <div class="timeline-meta">Centro Universitário Martha Falcão Wyden | Segurança Cibernética</div>
+                        <p>
+                            Desenvolvimento de protótipo de IA (Autoencoders + NLP) para detecção de exfiltração e classificação de dados sensíveis em organizações da sociedade civil. <a class="inline-link" href="#pesquisa">ver detalhes ↑</a>
+                        </p>
+                    </div>
+                </div>
+
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">[Maio/2023] – [Out/2024]</span>
-                        <h3 class="timeline-title">Jovem Aprendiz em TI</h3>
-                        <div class="timeline-meta">Grupo 4 Mares | Suporte Técnico e Help Desk</div>
-                        <p>
-                            O início da minha trajetória no suporte corporativo, desenvolvendo a base do atendimento ao usuário e o primeiro contato prático com gestão de incidentes. Principais atuações:
-                        </p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li style="margin-bottom: 5px;"><strong>Help Desk e Escalonamento:</strong> Gestão de chamados via plataforma ITSM (Milvus), assegurando triagem ágil, documentação precisa e escalonamento para os níveis N2/N3.</li>
-                            <li style="margin-bottom: 5px;"><strong>Controle de Acessos (ERP Winthor):</strong> Atuação no gerenciamento de permissões do sistema, já aplicando desde o início o princípio do privilégio mínimo para a proteção de dados corporativos.</li>
-                            <li><strong>Suporte e Inventário:</strong> Resolução de incidentes de baixa complexidade (hardware e software) e auxílio no controle seguro do inventário de ativos móveis e linhas corporativas.</li>
+                        <span class="timeline-date">[Mai/2023] – [Set/2024]</span>
+                        <h3 class="timeline-title">Aprendiz de TI</h3>
+                        <div class="timeline-meta">Grupo 4 Mares | Suporte técnico e Help Desk</div>
+                        <ul class="tl-list">
+                            <li><strong>Help Desk:</strong> gestão de chamados via ITSM (Milvus), com triagem, documentação e escalonamento para N2/N3.</li>
+                            <li><strong>Controle de acessos (ERP Winthor):</strong> gerenciamento de permissões aplicando o princípio do privilégio mínimo.</li>
+                            <li><strong>Suporte e inventário:</strong> resolução de incidentes de hardware e software e apoio no controle de ativos móveis e linhas corporativas.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Item 2: Formação -->
                 <div class="timeline-item">
-                    <div class="timeline-dot" style="background: var(--amber); box-shadow: 0 0 8px var(--amber);"></div>
+                    <div class="timeline-dot amber"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Reta Final</span>
-                        <h3 class="timeline-title">Análise e Desenvolvimento de Sistemas (ADS)</h3>
-                        <div class="timeline-meta">Graduação Tecnológica</div>
+                        <span class="timeline-date">[Mar/2024] – [Dez/2026]</span>
+                        <h3 class="timeline-title">Análise e Desenvolvimento de Sistemas</h3>
+                        <div class="timeline-meta">Centro Universitário Martha Falcão Wyden | Graduação Tecnológica</div>
                         <p>
-                            Construção de base sólida em lógica e engenharia de software. Aplicação ativa dos conhecimentos acadêmicos no desenvolvimento de scripts e automações (Python), unindo o desenvolvimento de código com as necessidades diárias de infraestrutura e  algumas coisas em cibersegurança.
+                            Base em lógica, engenharia de software e banco de dados, aplicada no desenvolvimento de automações em Python para infraestrutura e de projetos de segurança.
                         </p>
                     </div>
                 </div>
@@ -232,13 +341,125 @@
         </div>
     </section>
 
+    <!-- ======================= PROJETOS ======================= -->
+    <section id="projetos" class="reveal">
+        <div class="wrap">
+            <div class="sec-head">
+                <span class="sec-tag">04 — repositório</span>
+                <h2 class="sec-title">Projetos</h2>
+                <p class="sec-sub">ls -la ./projetos — segurança, IA e automação de infraestrutura.</p>
+            </div>
+
+            <div class="projects-toolbar">
+                <button class="filter-btn active" data-filter="all">todos</button>
+                <button class="filter-btn" data-filter="ia">ia</button>
+                <button class="filter-btn" data-filter="seguranca">segurança</button>
+                <button class="filter-btn" data-filter="automacao">automação</button>
+            </div>
+
+            <div class="proj-grid" id="projGrid">
+
+                <article class="proj-card featured" data-cat="ia seguranca">
+                    <div class="proj-termbar">
+                        <span class="pdot" style="background:#ff5f57;"></span>
+                        <span class="pdot" style="background:#febc2e;"></span>
+                        <span class="pdot" style="background:#28c840;"></span>
+                        <span class="path">pibiti-pibid-osc.git</span>
+                        <span class="badge violet">pesquisa</span>
+                    </div>
+                    <div class="proj-body">
+                        <h3>Detecção de Exfiltração com IA (PIBITI)</h3>
+                        <p>Protótipo que extrai features de tráfego (.pcap) com Scapy para um Autoencoder e identifica dados pessoais em payloads com regex + NLP (BERTimbau), com foco em LGPD para ONGs.</p>
+                        <div class="proj-stack"><span>Python</span><span>PyTorch</span><span>Transformers</span><span>Scapy</span></div>
+                        <div class="proj-links">
+                            <a href="https://github.com/JorgeVieirah/pibiti-pibid-osc" target="_blank" rel="noopener">↗ GitHub</a>
+                            <span class="wip">em andamento</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-cat="automacao">
+                    <div class="proj-termbar">
+                        <span class="pdot" style="background:#ff5f57;"></span>
+                        <span class="pdot" style="background:#febc2e;"></span>
+                        <span class="pdot" style="background:#28c840;"></span>
+                        <span class="path">gestao-dispositivos.git</span>
+                    </div>
+                    <div class="proj-body">
+                        <h3>Gestão de Dispositivos (ITAM)</h3>
+                        <p>Sistema para inventário de aparelhos corporativos: API REST em Flask + SQLite, painel web e app mobile em React Native (Expo). Registra saídas e devoluções e gera os termos de responsabilidade em .docx.</p>
+                        <div class="proj-stack"><span>Python</span><span>Flask</span><span>SQLite</span><span>React Native</span></div>
+                        <div class="proj-links">
+                            <a href="https://github.com/JorgeVieirah/gestao-dispositivos" target="_blank" rel="noopener">↗ GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-cat="seguranca">
+                    <div class="proj-termbar">
+                        <span class="pdot" style="background:#ff5f57;"></span>
+                        <span class="pdot" style="background:#febc2e;"></span>
+                        <span class="pdot" style="background:#28c840;"></span>
+                        <span class="path">sql-injection-detector.git</span>
+                    </div>
+                    <div class="proj-body">
+                        <h3>Simulador de SQL Injection</h3>
+                        <p>Laboratório de ataque e defesa: um script dispara payloads clássicos de SQL Injection contra um login em Flask protegido por consultas parametrizadas, e uma camada de detecção registra as tentativas suspeitas em log.</p>
+                        <div class="proj-stack"><span>Python</span><span>Flask</span><span>SQLite</span><span>Logging</span></div>
+                        <div class="proj-links">
+                            <a href="https://github.com/JorgeVieirah/Simulador-de-SQL-Injection-Detector" target="_blank" rel="noopener">↗ GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-cat="automacao">
+                    <div class="proj-termbar">
+                        <span class="pdot" style="background:#ff5f57;"></span>
+                        <span class="pdot" style="background:#febc2e;"></span>
+                        <span class="pdot" style="background:#28c840;"></span>
+                        <span class="path">auto-termo-responsabilidade.git</span>
+                    </div>
+                    <div class="proj-body">
+                        <h3>Gerador de Termos de Responsabilidade</h3>
+                        <p>Automação em Python que preenche modelos .docx de termos de uso de celulares, notebooks e periféricos a partir dos dados do colaborador, eliminando o preenchimento manual.</p>
+                        <div class="proj-stack"><span>Python</span><span>python-docx</span><span>CLI</span></div>
+                        <div class="proj-links">
+                            <a href="https://github.com/JorgeVieirah/Auto-Termo-Responsabilidade" target="_blank" rel="noopener">↗ GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-cat="ia">
+                    <div class="proj-termbar">
+                        <span class="pdot" style="background:#ff5f57;"></span>
+                        <span class="pdot" style="background:#febc2e;"></span>
+                        <span class="pdot" style="background:#28c840;"></span>
+                        <span class="path">lab/llm-local</span>
+                        <span class="badge">lab</span>
+                    </div>
+                    <div class="proj-body">
+                        <h3>Orquestração de LLMs locais</h3>
+                        <p>Laboratório pessoal com LangGraph, LiteLLM e Ollama para orquestrar modelos rodando localmente, com cache, verificação de respostas e foco em economia de tokens.</p>
+                        <div class="proj-stack"><span>Python</span><span>LangGraph</span><span>LiteLLM</span><span>Ollama</span></div>
+                        <div class="proj-links">
+                            <span class="wip">em desenvolvimento</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="more-repos"><a href="https://github.com/JorgeVieirah?tab=repositories" target="_blank" rel="noopener">$ ls ~/github --all ↗</a></p>
+        </div>
+    </section>
+
     <!-- ======================= CERTIFICAÇÕES ======================= -->
     <section class="certs reveal" id="certificacoes">
         <div class="wrap">
             <div class="sec-head">
-                <span class="sec-tag">03 — credenciais</span>
-                <h2 class="sec-title">Certificações &amp; Insígnias</h2>
-                <p class="sec-sub">cat certificados.log — registros validados de conquistas e trilhas concluídas.</p>
+                <span class="sec-tag">05 — credenciais</span>
+                <h2 class="sec-title">Certificações</h2>
+                <p class="sec-sub">cat certificados.log — trilhas concluídas em segurança e redes.</p>
             </div>
 
             <div class="cert-grid">
@@ -251,7 +472,7 @@
                     </div>
                     <h3>Google Cybersecurity Professional Certificate</h3>
                     <div class="cert-issuer">Google — Coursera</div>
-                    <div class="cert-meta"><span>Credencial Profissional</span><span>2025</span></div>
+                    <div class="cert-meta"><span>certificado profissional</span><span>2026</span></div>
                 </div>
 
                 <div class="cert-card">
@@ -261,7 +482,7 @@
                         </div>
                         <span class="cert-status">verificado</span>
                     </div>
-                    <h3>Maratona de Hacking Ético</h3>
+                    <h3>Ethical Hacker</h3>
                     <div class="cert-issuer">Cisco Networking Academy</div>
                     <div class="cert-meta"><span>insígnia + certificado</span><span>2026</span></div>
                 </div>
@@ -273,33 +494,9 @@
                         </div>
                         <span class="cert-status">verificado</span>
                     </div>
-                    <h3>Introduction to Cybersecurity & Networks</h3>
+                    <h3>Introduction to Cybersecurity</h3>
                     <div class="cert-issuer">Cisco Networking Academy</div>
                     <div class="cert-meta"><span>certificado</span><span>2026</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= PROJETOS ======================= -->
-    <section id="projetos" class="reveal">
-        <div class="wrap">
-            <div class="sec-head">
-                <span class="sec-tag">04 — repositório</span>
-                <h2 class="sec-title">Projetos</h2>
-                <p class="sec-sub">ls -la ./projetos — ferramentas e simulações desenvolvidas dinamicamente.</p>
-            </div>
-
-            <div class="projects-toolbar">
-                <button class="filter-btn active" data-filter="all">todos</button>
-                <button class="filter-btn" data-filter="python">python</button>
-                <button class="filter-btn" data-filter="javascript">javascript</button>
-                <button class="filter-btn" data-filter="shell">shell</button>
-            </div>
-
-            <div class="proj-grid" id="projGrid">
-                <div id="repo-loader" class="ln" style="grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 2rem 0;">
-                    <span class="p">$</span> buscando repositórios remotos via api.github.com...
                 </div>
             </div>
         </div>
@@ -309,9 +506,9 @@
     <section class="term-section reveal" id="terminal">
         <div class="wrap">
             <div class="sec-head" style="text-align:center;">
-                <span class="sec-tag">05 — interativo</span>
+                <span class="sec-tag">06 — interativo</span>
                 <h2 class="sec-title">Terminal ao vivo</h2>
-                <p class="sec-sub" style="margin:10px auto 0;">Digite comandos reais para explorar mais sobre mim. Comece com <code style="color:var(--green-dim);">help</code>.</p>
+                <p class="sec-sub" style="margin:10px auto 0;">Digite comandos para explorar mais sobre mim. Comece com <code style="color:var(--green-dim);">help</code>.</p>
             </div>
 
             <div class="live-term">
@@ -324,37 +521,37 @@
                 </div>
                 <form class="live-term-form" id="termForm">
                     <span class="p">$</span>
-                    <input type="text" id="termInput" autocomplete="off" placeholder="digite um comando..." aria-label="Campo de comando do terminal">
+                    <input type="text" id="termInput" autocomplete="off" maxlength="80" placeholder="digite um comando..." aria-label="Campo de comando do terminal">
                 </form>
             </div>
-            <p class="term-hint">tente: <code>help</code> · <code>sobre</code> · <code>skills</code> · <code>certificados</code> · <code>clear</code></p>
+            <p class="term-hint">tente: <code>help</code> · <code>whoami</code> · <code>pesquisa</code> · <code>skills</code> · <code>neofetch</code> · <code>clear</code></p>
         </div>
     </section>
 
-    <!-- ======================= CONTATO (Apenas Botões) ======================= -->
+    <!-- ======================= CONTATO ======================= -->
     <section id="contato" class="reveal">
         <div class="wrap">
             <div class="sec-head" style="text-align: center;">
-                <span class="sec-tag">06 — conexão</span>
+                <span class="sec-tag">07 — conexão</span>
                 <h2 class="sec-title">Contato</h2>
-                <p class="sec-sub" style="margin: 10px auto 0;">Vamos conversar sobre infraestrutura, segurança ou automação. Escolha um canal abaixo:</p>
+                <p class="sec-sub" style="margin: 10px auto 0;">Vamos conversar sobre infraestrutura, segurança ou IA aplicada. Escolha um canal:</p>
             </div>
 
             <div class="contact-grid">
                 <a class="contact-item" href="mailto:jorgevieirah.contato@gmail.com">
-                    <div class="ci-icon">✉️</div>
+                    <div class="ci-icon">@</div>
                     <div><div class="ci-label">email</div><div class="ci-value">jorgevieirah.contato@gmail.com</div></div>
                 </a>
-                <a class="contact-item" href="https://www.linkedin.com/in/jorge-vieira-73728a214" target="_blank" rel="noopener">
+                <a class="contact-item" href="https://www.linkedin.com/in/jorge-vieira-it-professional" target="_blank" rel="noopener">
                     <div class="ci-icon">in</div>
-                    <div><div class="ci-label">linkedin</div><div class="ci-value">linkedin.com/in/jorge-vieira</div></div>
+                    <div><div class="ci-label">linkedin</div><div class="ci-value">in/jorge-vieira-it-professional</div></div>
                 </a>
                 <a class="contact-item" href="https://github.com/JorgeVieirah" target="_blank" rel="noopener">
                     <div class="ci-icon">⌥</div>
                     <div><div class="ci-label">github</div><div class="ci-value">github.com/JorgeVieirah</div></div>
                 </a>
                 <div class="contact-item" style="cursor:default;">
-                    <div class="ci-icon">📍</div>
+                    <div class="ci-icon">⌖</div>
                     <div><div class="ci-label">localização</div><div class="ci-value">Manaus, AM — Brasil</div></div>
                 </div>
             </div>
@@ -364,8 +561,8 @@
     <!-- ======================= FOOTER ======================= -->
     <footer>
         <div class="wrap">
-            <div class="fline"><span class="green">$</span> echo "feito com código limpo e foco em performance"</div>
-            <div class="fline">© <span id="year"></span> Jorge Vieira — todos os direitos reservados</div>
+            <div class="fline"><span class="green">$</span> echo "construído à mão, sem frameworks, servido pelo GitHub Pages"</div>
+            <div class="fline">© <span id="year"></span> Jorge Vieira</div>
         </div>
     </footer>
 
