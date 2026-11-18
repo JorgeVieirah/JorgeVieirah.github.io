@@ -13,6 +13,7 @@
   --amber:      #ffb454;
   --red:        #ff5c5c;
   --blue:       #58c4ff;
+  --violet:     #b48cff;
 
   --mono: 'JetBrains Mono', ui-monospace, monospace;
   --disp: 'Space Grotesk', sans-serif;
@@ -458,6 +459,7 @@ section { padding: 110px 0; position: relative; }
 .pc-val { color: var(--text); }
 .pc-val.green { color: var(--green); }
 .pc-val.amber { color: var(--amber); }
+.pc-val.violet { color: var(--violet); }
 
 .status-line {
   margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-soft);
@@ -691,7 +693,7 @@ section { padding: 110px 0; position: relative; }
 .proj-body { padding: 20px 20px 22px; flex: 1; display: flex; flex-direction: column; }
 .proj-cmd { font-size: 12px; color: var(--green-dim); margin-bottom: 10px; }
 .proj-cmd .p { color: var(--green); }
-.proj-card h3 { font-size: 17px; color: #eef4f4; margin-bottom: 10px; font-family: var(--disp); text-transform: capitalize; }
+.proj-card h3 { font-size: 17px; color: #eef4f4; margin-bottom: 10px; font-family: var(--disp); }
 .proj-card p { font-size: 13.5px; color: var(--text-dim); margin-bottom: 16px; flex: 1; }
 
 .proj-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
@@ -833,3 +835,92 @@ footer .fline .green { color: var(--green-dim); }
   .nf-body { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
 
+
+
+/* ============================================================
+   v2 — IA + SEGURANÇA + LINUX
+   ============================================================ */
+.hero-loc { color: var(--text-faint); font-size: 0.85em; }
+.about-text .hl-violet { color: var(--violet); }
+
+/* grupos de skills */
+.skill-group { margin-bottom: 22px; }
+.skill-group:last-child { margin-bottom: 0; }
+.skill-group h3 { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+.sg-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.sg-dot.green { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.sg-dot.amber { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.sg-dot.violet { background: var(--violet); box-shadow: 0 0 8px var(--violet); }
+.tag.violet:hover { border-color: var(--violet); color: var(--violet); background: rgba(180, 140, 255, 0.07); }
+
+/* pesquisa */
+.research { background: var(--bg-alt); }
+.research-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px; align-items: start; }
+.research-text p { font-size: 14.5px; color: var(--text); margin-bottom: 14px; }
+.research-text strong { color: #eef4f4; }
+.research-text .rs-lead { color: #eef4f4; font-size: 15.5px; border-left: 2px solid var(--violet); padding-left: 14px; }
+.rs-meta { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--text-faint); margin: 18px 0; }
+.rs-meta span::before { content: '# '; color: var(--violet); }
+
+.pipeline-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: 0 16px 40px rgba(0,0,0,.35); overflow: hidden;
+}
+.pipeline-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.lane-label { font-size: 11px; color: var(--text-faint); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+.lane-label::before { content: '▸ '; color: var(--green); }
+.lane-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.step {
+  font-size: 11.5px; padding: 6px 10px; border: 1px solid var(--line);
+  border-radius: var(--radius); color: var(--text); background: var(--panel-2); white-space: nowrap;
+}
+.step.violet { border-color: var(--violet); color: var(--violet); background: rgba(180, 140, 255, 0.07); }
+.step.alert { border-color: var(--amber); color: var(--amber); background: rgba(255, 180, 84, 0.07); white-space: normal; }
+.arrow { color: var(--text-faint); font-size: 12px; }
+.lane.merge { display: flex; flex-direction: column; align-items: center; gap: 6px; padding-top: 4px; border-top: 1px dashed var(--line-soft); }
+
+.roadmap { border-top: 1px solid var(--line-soft); padding-top: 14px; }
+.roadmap-title { font-size: 11px; color: var(--text-faint); margin-bottom: 10px; }
+.roadmap-steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.roadmap-steps li {
+  font-size: 11px; color: var(--text-faint); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); padding: 7px 9px; line-height: 1.35;
+}
+.roadmap-steps li span { display: block; font-size: 10px; color: var(--text-faint); opacity: .8; }
+.roadmap-steps li.done { color: var(--green-dim); border-color: var(--green-dim); }
+.roadmap-steps li.done span::after { content: ' ✓'; }
+.roadmap-steps li.current { color: var(--violet); border-color: var(--violet); background: rgba(180, 140, 255, 0.07); }
+.roadmap-steps li.current span::after { content: ' ← agora'; color: var(--violet); }
+
+/* timeline */
+.timeline-dot.violet { background: var(--violet); box-shadow: 0 0 10px var(--violet); }
+.timeline-dot.amber { background: var(--amber); box-shadow: 0 0 10px var(--amber); }
+.tl-list { margin-top: 10px; padding-left: 0; }
+.tl-list li { margin-bottom: 6px; font-size: 14px; color: var(--text-dim); padding-left: 16px; position: relative; }
+.tl-list li::before { content: '›'; position: absolute; left: 0; color: var(--green); }
+.inline-link { color: var(--violet); border-bottom: 1px dashed var(--violet); }
+
+/* projetos */
+.proj-termbar .badge {
+  margin-left: auto; font-size: 10px; padding: 2px 8px; border-radius: 20px;
+  border: 1px solid var(--line); color: var(--text-dim);
+}
+.proj-termbar .badge.violet { border-color: var(--violet); color: var(--violet); }
+.proj-card.featured { border-color: rgba(180, 140, 255, 0.45); }
+.proj-card.featured:hover { border-color: var(--violet); }
+.proj-links { align-items: center; }
+.proj-links .wip { font-size: 11px; color: var(--amber); }
+.proj-links .wip::before { content: '● '; }
+.more-repos { text-align: center; margin-top: 28px; font-size: 13px; }
+.more-repos a { color: var(--text-dim); border-bottom: 1px dashed var(--line); transition: color .2s ease; }
+.more-repos a:hover { color: var(--green); }
+
+.live-term-body .ln .ia { color: var(--violet); }
+
+@media (max-width: 900px) {
+  .research-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .roadmap-steps { grid-template-columns: repeat(2, 1fr); }
+  .step { white-space: normal; }
+}

@@ -108,10 +108,11 @@ revealEls.forEach(el => io.observe(el));
 
 /* --- Typewriter Effect (Hero) --- */
 const roles = [
-  'estudante de Análise e Desenvolvimento de Sistemas',
-  'aspirante Cibersegurança Defensiva',
-  'desenvolvedor de automações em Python',
-  'profissional de infraestrutura de TI'
+  'profissional de infraestrutura de TI',
+  'pesquisador em IA aplicada à segurança',
+  'blue team em formação',
+  'usuário de Arch Linux no dia a dia',
+  'automatizador de tarefas em Python'
 ];
 const typedEl = document.getElementById('typed-role');
 let rIndex = 0, cIndex = 0, deleting = false;
@@ -143,7 +144,7 @@ const filterBtns = document.querySelectorAll('.filter-btn');
 function aplicarFiltro(filtro) {
   const projCards = document.querySelectorAll('.proj-card');
   projCards.forEach(card => {
-    const cats = card.dataset.cat;
+    const cats = (card.dataset.cat || '').split(/\s+/);
     const show = filtro === 'all' || cats.includes(filtro);
     card.style.display = show ? '' : 'none';
   });
@@ -156,72 +157,6 @@ filterBtns.forEach(btn => {
     aplicarFiltro(btn.dataset.filter);
   });
 });
-
-/* --- Integração Dinâmica com a API do GitHub --- */
-async function carregarProjetosDoGitHub() {
-  const username = "JorgeVieirah";
-  const url = `https://api.github.com/users/${username}/repos?sort=updated&per_page=12`;
-  const gridContainer = document.getElementById('projGrid');
-  const loader = document.getElementById('repo-loader');
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Erro ao conectar com a API do GitHub');
-    
-    const repos = await response.json();
-    if (loader) loader.remove();
-
-    const meusRepos = repos.filter(repo => !repo.fork && repo.description);
-
-    if (meusRepos.length === 0) {
-      gridContainer.innerHTML = `<div class="ln" style="grid-column:1/-1; text-align:center; color:var(--amber);">[ AVISO ] Nenhum repositório público descritivo encontrado.</div>`;
-      return;
-    }
-
-    meusRepos.forEach(repo => {
-      const principalLanguage = repo.language ? repo.language : "Shell";
-      const card = document.createElement('article');
-      card.className = 'proj-card';
-      
-      const categoriaFiltro = principalLanguage.toLowerCase();
-      card.setAttribute('data-cat', `all ${categoriaFiltro}`); 
-
-      card.innerHTML = `
-        <div class="proj-termbar">
-            <span class="pdot" style="background:#ff5f57;"></span>
-            <span class="pdot" style="background:#febc2e;"></span>
-            <span class="pdot" style="background:#28c840;"></span>
-            <span class="path">${repo.name.toLowerCase()}.git</span>
-        </div>
-        <div class="proj-body">
-            <div class="proj-cmd"><span class="p">$</span> git clone ${repo.clone_url}</div>
-            <h3>${repo.name.replace(/-/g, ' ')}</h3>
-            <p>${repo.description}</p>
-            <div class="proj-stack">
-                <span>${principalLanguage}</span>
-                <span>OpenSource</span>
-            </div>
-            <div class="proj-links">
-                <a href="${repo.html_url}" target="_blank" rel="noopener">↗ GitHub</a>
-                ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" rel="noopener">demo</a>` : `<a href="#" class="disabled">demo</a>`}
-            </div>
-        </div>
-      `;
-      gridContainer.appendChild(card);
-    });
-
-    const filtroAtivo = document.querySelector('.filter-btn.active').dataset.filter;
-    aplicarFiltro(filtroAtivo);
-
-  } catch (error) {
-    console.error(error);
-    if (loader) {
-      loader.innerHTML = `<span class="warn" style="color:var(--red);">[ ERRO ] Falha ao carregar repositórios remotos.</span>`;
-    }
-  }
-}
-
-document.addEventListener('DOMContentLoaded', carregarProjetosDoGitHub);
 
 /* --- Terminal Interativo (Simulador Live-Terminal) --- */
 const termBody = document.getElementById('termBody');
@@ -236,36 +171,56 @@ function printLine(html){
   termBody.scrollTop = termBody.scrollHeight;
 }
 
+// Escapa o texto digitado antes de exibir (evita injeção de HTML no terminal)
+function escapeHTML(str){
+  return str.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
+function irPara(id, msg){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  return `<span class="out">${msg}</span>`;
+}
+
 const commands = {
   help: () => `<span class="out">Comandos disponíveis:</span><br>
+    <span class="ok">whoami</span> — quem sou eu, em uma linha<br>
     <span class="ok">sobre</span> — resumo do perfil profissional<br>
-    <span class="ok">skills</span> — stack de ferramentas e tecnologias<br>
+    <span class="ok">pesquisa</span> — minha iniciação tecnológica (PIBITI)<br>
+    <span class="ok">skills</span> — ferramentas por área<br>
+    <span class="ok">neofetch</span> — informações do "sistema"<br>
     <span class="ok">certificados</span> — credenciais de segurança e redes<br>
-    <span class="ok">projetos</span> — rolar até a galeria de projetos<br>
-    <span class="ok">contato</span> — exibir formas de contato<br>
-    <span class="ok">clear</span> — limpar o histórico do terminal`,
-  sobre: () => `<span class="out">Jorge Vieira. Profissional de Infraestrutura de TI e graduando em ADS. Especialização focada em Blue Team, análise de logs e automação com scripts Python.</span>`,
-  skills: () => `<span class="out">Python · Linux (Fedora/Arch) · Git/GitHub · Active Directory · Redes Cisco · Cybersecurity · Log Parsing</span>`,
-  certificados: () => `<span class="out">Google Cybersecurity Professional Certificate · Cisco Networking Academy (Hacking Ético / Introdução a Redes)</span>`,
-  projetos: () => { document.getElementById('projetos').scrollIntoView({behavior:'smooth'}); return `<span class="out">Navegando até ./projetos...</span>`; },
-  contato: () => { document.getElementById('contato').scrollIntoView({behavior:'smooth'}); return `<span class="out">Iniciando protocolo de conexão... navegando até ./contato</span>`; },
+    <span class="ok">projetos</span> — ir para a galeria de projetos<br>
+    <span class="ok">contato</span> — formas de contato<br>
+    <span class="ok">clear</span> — limpar o terminal`,
+  whoami: () => `<span class="out">jorge — infraestrutura de TI · cibersegurança · IA aplicada à segurança</span>`,
+  sobre: () => `<span class="out">Jorge Vieira. Assistente de Infraestrutura em Manaus e formando em ADS. Trabalho com AD/IAM, redes e endpoints; estudo segurança defensiva e pesquiso IA para detectar exfiltração de dados.</span>`,
+  pesquisa: () => irPara('pesquisa', 'PIBITI: Autoencoders + NLP para detectar exfiltração e proteger dados sensíveis (LGPD) em ONGs. Abrindo ./pesquisa...'),
+  skills: () => `<span class="ok">infra/linux</span> <span class="out">Arch · Fedora · Active Directory · Cisco Meraki · UEM · Git</span><br>
+    <span class="warn">segurança</span> <span class="out">Wireshark · Nmap · Suricata · Splunk · Hardening · LGPD</span><br>
+    <span class="ia">ia/dados</span> <span class="out">Python · PyTorch · scikit-learn · Transformers · pandas · Scapy</span>`,
+  neofetch: () => `<span class="ok">jorge@arch</span><br><span class="out">OS: Arch Linux x86_64 · Shell: zsh · Role: Infra &amp; SecOps · Research: IA p/ detecção de exfiltração</span>`,
+  certificados: () => `<span class="out">Google Cybersecurity Professional Certificate · Cisco Ethical Hacker · Cisco Introduction to Cybersecurity</span>`,
+  projetos: () => irPara('projetos', 'Navegando até ./projetos...'),
+  contato: () => irPara('contato', 'Navegando até ./contato...'),
+  ls: () => `<span class="out">sobre_mim.md  pesquisa/  projetos/  certificados.log  contato.txt</span>`,
   clear: () => { termBody.innerHTML = ''; return null; },
 };
 
-commands['sudo hire-me'] = () => `<span class="warn">[sudo]</span> <span class="out">permissão concedida. Solicitação de recrutamento iniciada. Use os links da seção de contato para formalizar a proposta! 🚀</span>`;
+commands['sudo hire-me'] = () => `<span class="warn">[sudo]</span> <span class="out">permissão concedida. Use os links da seção de contato para formalizar a proposta! 🚀</span>`;
+commands['rm -rf /'] = () => `<span class="warn">nice try.</span> <span class="out">princípio do privilégio mínimo ativo 😉</span>`;
 
 termForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const raw = termInput.value.trim();
   if (!raw) return;
-  printLine(`<span class="p">visitante@portfolio:~$</span> ${raw}`);
+  printLine(`<span class="p">visitante@portfolio:~$</span> ${escapeHTML(raw)}`);
 
   const key = raw.toLowerCase();
   if (commands[key]){
     const result = commands[key]();
     if (result) printLine(result);
   } else {
-    printLine(`<span class="out">comando não encontrado: <span class="warn">${raw}</span>. digite <span class="ok">help</span> para instruções.</span>`);
+    printLine(`<span class="out">comando não encontrado: <span class="warn">${escapeHTML(raw)}</span>. digite <span class="ok">help</span> para instruções.</span>`);
   }
   termInput.value = '';
 });
