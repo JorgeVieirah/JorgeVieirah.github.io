@@ -352,3 +352,37 @@ if (!reduceMotion) {
   setTimeout(glitchTick, 3200);
   setTimeout(nameTick, 4500);
 }
+
+/* ---------- foto no contato: carrega "falhando" e dá pequenas falhas depois ---------- */
+(() => {
+  const term = document.getElementById('photoTerm');
+  if (!term) return;
+  const pct = term.querySelector('.pt-pct');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) { term.classList.add('done'); if (pct) pct.textContent = '100%'; return; }
+  const io = new IntersectionObserver((entries) => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    io.disconnect();
+    term.classList.add('boot');
+    let n = 0;
+    setTimeout(() => {
+      const t = setInterval(() => {
+        n = Math.min(100, n + 8 + Math.floor(Math.random() * 6));
+        if (pct) pct.textContent = n + '%';
+        if (n >= 100) clearInterval(t);
+      }, 90);
+    }, 800);
+    setTimeout(() => {
+      term.classList.remove('boot'); term.classList.add('done');
+      const burst = () => {
+        if (!document.hidden) {
+          term.classList.add('burst');
+          setTimeout(() => term.classList.remove('burst'), 470);
+        }
+        setTimeout(burst, 5000 + Math.random() * 5000);
+      };
+      setTimeout(burst, 4000);
+    }, 3100);
+  }, { threshold: 0.35 });
+  io.observe(term);
+})();
