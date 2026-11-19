@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,20 @@
     <meta property="og:description" content="Infraestrutura de TI, cibersegurança e IA aplicada à segurança. Manaus, AM.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jorgevieirah.github.io/">
+    <meta property="og:image" content="https://jorgevieirah.github.io/assets/img/avatar.png">
     <meta name="theme-color" content="#0a0e0f">
+    <script>
+      /* aplica tema e idioma salvos antes da pintura, evitando flash */
+      (function () {
+        try {
+          var t = localStorage.getItem('jv-theme');
+          if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+          var l = localStorage.getItem('jv-lang');
+          if (l === 'en') document.documentElement.setAttribute('lang', 'en');
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -18,23 +31,33 @@
 <body>
 
     <!-- ======================= TOPBAR ======================= -->
-    <header class="termbar">
+    <header class="termbar" id="termbar">
         <div class="termbar-inner">
             <div style="display:flex; align-items:center; gap:16px;">
                 <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
                 <div class="termbar-title">jorge@arch:~<span class="blinker"></span></div>
             </div>
             <nav class="navlinks" id="navlinks">
-                <a href="#sobre">sobre</a>
-                <a href="#pesquisa">pesquisa</a>
-                <a href="#experiencia">experiencia</a>
-                <a href="#projetos">projetos</a>
-                <a href="#certificacoes">certificacoes</a>
-                <a href="#terminal">terminal</a>
-                <a href="#contato">contato</a>
+                <a href="#sobre" data-en="about">sobre</a>
+                <a href="#pesquisa" data-en="research">pesquisa</a>
+                <a href="#experiencia" data-en="experience">experiencia</a>
+                <a href="#projetos" data-en="projects">projetos</a>
+                <a href="#certificacoes" data-en="certifications">certificacoes</a>
+                <a href="#terminal" data-en="terminal">terminal</a>
+                <a href="#contato" data-en="contact">contato</a>
             </nav>
-            <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">≡</button>
+            <div class="term-controls">
+                <button class="ctrl-btn" id="langToggle" aria-label="Mudar idioma para inglês" data-en-aria="Switch language to Portuguese">
+                    <span class="lang-opt" data-lang="pt">PT</span><span class="lang-sep">/</span><span class="lang-opt" data-lang="en">EN</span>
+                </button>
+                <button class="ctrl-btn icon" id="themeToggle" aria-label="Alternar tema claro/escuro" data-en-aria="Toggle light/dark theme">
+                    <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">≡</button>
+            </div>
         </div>
+        <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
     </header>
 
     <!-- ======================= HERO ======================= -->
@@ -45,25 +68,28 @@
 
             <div class="hero-text-side">
                 <div class="boot-log">
-                    <div><span>[ OK ]</span> montando /home/jorge ...</div>
-                    <div><span>[ OK ]</span> iniciando serviço: blue-team.service</div>
-                    <div><span>[ OK ]</span> carregando modelo: autoencoder.pt</div>
-                    <div><span>[ OK ]</span> sessão pronta — bem-vindo(a)</div>
+                    <div><span>[ OK ]</span> <span data-en="mounting /home/jorge ...">montando /home/jorge ...</span></div>
+                    <div><span>[ OK ]</span> <span data-en="starting service: blue-team.service">iniciando serviço: blue-team.service</span></div>
+                    <div><span>[ OK ]</span> <span data-en="loading model: autoencoder.pt">carregando modelo: autoencoder.pt</span></div>
+                    <div><span>[ OK ]</span> <span data-en="session ready — welcome">sessão pronta — bem-vindo(a)</span></div>
                 </div>
 
-                <span class="hero-eyebrow">infra · segurança · ia</span>
+                <span class="hero-eyebrow">infra · <span class="glitch" data-words="segurança|security|blue team" data-words-en="security|segurança|blue team">segurança</span> · <span class="glitch" data-words="ia|ai|machine learning" data-words-en="ai|ia|machine learning">ia</span></span>
 
-                <h1>Jorge <span class="accent">Vieira</span></h1>
-                <div class="hero-handle"><span class="at">@</span>jorgevieirah <span class="hero-loc">· Manaus, AM</span></div>
+                <h1>Jorge <span class="accent glitch-name">Vieira</span></h1>
+                <div class="hero-handle">
+                    <span class="avatar" aria-hidden="true"><img src="assets/img/avatar.webp" alt="" width="44" height="44" loading="eager"></span>
+                    <span><span class="at">@</span>jorgevieirah <span class="hero-loc">· Manaus, AM</span></span>
+                </div>
 
                 <div class="typewrap">
-                    <span class="prompt">visitante@portfolio:~$</span> whoami<br>
+                    <span class="prompt" data-en="visitor@portfolio:~$">visitante@portfolio:~$</span> whoami<br>
                     <span id="typed-role"></span><span class="caret"></span>
                 </div>
 
                 <div class="hero-cta">
-                    <a href="#pesquisa" class="btn btn-primary">ver pesquisa</a>
-                    <a href="#projetos" class="btn btn-ghost">&gt; projetos</a>
+                    <a href="#pesquisa" class="btn btn-primary" data-en="see research">ver pesquisa</a>
+                    <a href="#projetos" class="btn btn-ghost" data-en="&gt; projects">&gt; projetos</a>
                 </div>
             </div>
 
@@ -91,8 +117,8 @@
                             <div class="nf-row"><span class="nf-key">OS</span>: <span class="nf-val">Arch Linux x86_64</span></div>
                             <div class="nf-row"><span class="nf-key">Shell</span>: <span class="nf-val">zsh</span></div>
                             <div class="nf-row"><span class="nf-key">Role</span>: <span class="nf-val">Infra &amp; SecOps</span></div>
-                            <div class="nf-row"><span class="nf-key">Research</span>: <span class="nf-val">IA p/ detecção de exfiltração</span></div>
-                            <div class="nf-row"><span class="nf-key">Uptime</span>: <span class="nf-val">3+ anos em TI</span></div>
+                            <div class="nf-row"><span class="nf-key">Research</span>: <span class="nf-val" data-en="AI for exfiltration detection">IA p/ detecção de exfiltração</span></div>
+                            <div class="nf-row"><span class="nf-key">Uptime</span>: <span class="nf-val" data-en="3+ years in IT">3+ anos em TI</span></div>
                             <div class="nf-row"><span class="nf-key">Pkgs</span>: <span class="nf-val">Python · PyTorch · Scapy · AD</span></div>
 
                             <div class="nf-colors">
@@ -109,7 +135,12 @@
             </div>
 
         </div>
-        <div class="scroll-cue"><span>scroll</span><div class="bar"></div></div>
+
+        <!-- indicador de próxima seção: um comando que leva ao prompt do "Sobre" -->
+        <a class="next-cmd" href="#sobre" id="nextCmd">
+            <span class="p">$</span> <span data-en="cd ./about">cd ./sobre</span><span class="caret-sm"></span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
     </section>
 
     <!-- ======================= SOBRE MIM ======================= -->
@@ -118,8 +149,8 @@
 
             <div class="sec-head-terminal">
                 <div class="terminal-prompt-line">
-                    <span class="prompt">visitante@portfolio:~$</span>
-                    <span class="run-command">cat sobre_mim.md</span>
+                    <span class="prompt" data-en="visitor@portfolio:~$">visitante@portfolio:~$</span>
+                    <span class="run-command" data-en="cat about_me.md">cat sobre_mim.md</span>
                 </div>
             </div>
 
@@ -129,49 +160,49 @@
                         <span class="dot r" style="width:8px;height:8px;"></span>
                         <span class="dot y" style="width:8px;height:8px;"></span>
                         <span class="dot g" style="width:8px;height:8px;"></span>
-                        <span class="f">perfil.json</span>
+                        <span class="f" data-en="profile.json">perfil.json</span>
                     </div>
                     <div class="pc-body">
-                        <div class="pc-row"><span class="pc-key">nome</span><span class="pc-val">Jorge Vieira</span></div>
-                        <div class="pc-row"><span class="pc-key">formação</span><span class="pc-val">Análise e Desenvolvimento de Sistemas</span></div>
-                        <div class="pc-row"><span class="pc-key">atuação</span><span class="pc-val">Assistente de Infraestrutura</span></div>
-                        <div class="pc-row"><span class="pc-key">pesquisa</span><span class="pc-val violet">IA aplicada à segurança (PIBITI)</span></div>
-                        <div class="pc-row"><span class="pc-key">foco</span><span class="pc-val green">Infra · Segurança · IA</span></div>
-                        <div class="pc-row"><span class="pc-key">localização</span><span class="pc-val">Manaus, AM — Brasil</span></div>
-                        <div class="pc-row"><span class="pc-key">status</span><span class="pc-val amber">aprendendo enquanto construo</span></div>
-                        <div class="status-line"><span class="status-dot"></span> aberto a oportunidades</div>
+                        <div class="pc-row"><span class="pc-key" data-en="name">nome</span><span class="pc-val">Jorge Vieira</span></div>
+                        <div class="pc-row"><span class="pc-key" data-en="degree">formação</span><span class="pc-val" data-en="Systems Analysis and Development">Análise e Desenvolvimento de Sistemas</span></div>
+                        <div class="pc-row"><span class="pc-key" data-en="role">atuação</span><span class="pc-val" data-en="IT Infrastructure Assistant">Assistente de Infraestrutura</span></div>
+                        <div class="pc-row"><span class="pc-key" data-en="research">pesquisa</span><span class="pc-val violet" data-en="AI applied to security (PIBITI)">IA aplicada à segurança (PIBITI)</span></div>
+                        <div class="pc-row"><span class="pc-key" data-en="focus">foco</span><span class="pc-val green" data-en="Infra · Security · AI">Infra · Segurança · IA</span></div>
+                        <div class="pc-row"><span class="pc-key" data-en="location">localização</span><span class="pc-val">Manaus, AM — Brasil</span></div>
+                        <div class="pc-row"><span class="pc-key">status</span><span class="pc-val amber" data-en="learning while building">aprendendo enquanto construo</span></div>
+                        <div class="status-line"><span class="status-dot"></span> <span data-en="open to opportunities">aberto a oportunidades</span></div>
                     </div>
                 </div>
 
                 <div class="about-text">
-                    <p>
+                    <p data-en="I work in <strong>IT Infrastructure</strong> and I am graduating in Systems Analysis and Development. Day to day, I handle identity and access management in Active Directory, network monitoring with Cisco Meraki, endpoint management and nationwide technical support.">
                         Sou profissional de <strong>Infraestrutura de TI</strong> e formando em Análise e Desenvolvimento de Sistemas. No dia a dia, cuido da gestão de identidades e acessos no Active Directory, do monitoramento de redes com Cisco Meraki, da gestão de endpoints e do suporte técnico em nível nacional.
                     </p>
-                    <p>
+                    <p data-en="Outside work, I study <span class='hl'>cybersecurity</span> and build labs to test things in practice: traffic capture and analysis, intrusion detection and log analysis. I use <strong>Linux</strong> as my main system (Arch and Fedora) and apply <strong>Python</strong> to automate whatever is repetitive.">
                         Fora do expediente, estudo <span class="hl">cibersegurança</span> e monto laboratórios para testar na prática: captura e análise de tráfego, detecção de intrusão e análise de logs. Uso <strong>Linux</strong> como sistema principal (Arch e Fedora) e aplico <strong>Python</strong> para automatizar o que é repetitivo.
                     </p>
-                    <p>
+                    <p data-en="Today my focus is where security meets <span class='hl-violet'>artificial intelligence</span>. In my technology research grant (PIBITI), I am building a low-cost prototype that uses <strong>Autoencoders</strong> and <strong>NLP</strong> to detect data exfiltration and protect sensitive data in civil society organizations, with a focus on Brazil's data protection law (LGPD).">
                         Hoje meu foco está na interseção entre segurança e <span class="hl-violet">inteligência artificial</span>. Na minha iniciação tecnológica (PIBITI), desenvolvo um protótipo de baixo custo que usa <strong>Autoencoders</strong> e <strong>NLP</strong> para detectar exfiltração e proteger dados sensíveis em organizações da sociedade civil, com foco na LGPD.
                     </p>
-                    <p>
+                    <p data-en="In security, whoever stops learning falls behind, and I bring that to everything I do: every project is a chance to understand a system a little deeper and document what I found along the way.">
                         Em segurança, quem para de aprender fica para trás, e eu levo isso para tudo o que faço: cada projeto é uma chance de entender um sistema um pouco mais a fundo e registrar o que descobri no caminho.
                     </p>
 
                     <div class="skills-block">
                         <div class="skill-group">
                             <h3><span class="sg-dot green"></span>infra &amp; linux</h3>
-                            <div class="skill-tags">
+                            <div class="skill-tags stagger">
                                 <span class="tag">Linux (Arch / Fedora)</span>
                                 <span class="tag">Active Directory / IAM</span>
                                 <span class="tag">Cisco Meraki</span>
-                                <span class="tag">Redes TCP/IP</span>
+                                <span class="tag" data-en="TCP/IP networking">Redes TCP/IP</span>
                                 <span class="tag">UEM / MDM</span>
                                 <span class="tag">Git &amp; GitHub</span>
                             </div>
                         </div>
                         <div class="skill-group">
-                            <h3><span class="sg-dot amber"></span>segurança</h3>
-                            <div class="skill-tags">
+                            <h3><span class="sg-dot amber"></span><span data-en="security">segurança</span></h3>
+                            <div class="skill-tags stagger">
                                 <span class="tag amber">Wireshark</span>
                                 <span class="tag amber">Nmap</span>
                                 <span class="tag amber">Suricata</span>
@@ -181,8 +212,8 @@
                             </div>
                         </div>
                         <div class="skill-group">
-                            <h3><span class="sg-dot violet"></span>ia &amp; dados</h3>
-                            <div class="skill-tags">
+                            <h3><span class="sg-dot violet"></span><span data-en="ai &amp; data">ia &amp; dados</span></h3>
+                            <div class="skill-tags stagger">
                                 <span class="tag violet">Python</span>
                                 <span class="tag violet">PyTorch</span>
                                 <span class="tag violet">scikit-learn</span>
@@ -201,28 +232,28 @@
     <section id="pesquisa" class="research reveal">
         <div class="wrap">
             <div class="sec-head">
-                <span class="sec-tag">02 — pesquisa</span>
-                <h2 class="sec-title">IA contra vazamento de dados</h2>
-                <p class="sec-sub">PIBITI · Iniciação Tecnológica · Centro Universitário Martha Falcão Wyden · ago/2026 – jul/2027</p>
+                <span class="sec-tag" data-en="02 — research">02 — pesquisa</span>
+                <h2 class="sec-title"><span data-en="AI against">IA contra</span> <span class="glitch" data-words="vazamento de dados|data leaks|exfiltração" data-words-en="data leaks|vazamento de dados|exfiltration">vazamento de dados</span></h2>
+                <p class="sec-sub" data-en="PIBITI · Technology Research Grant · Centro Universitário Martha Falcão Wyden · Aug/2026 – Jul/2027">PIBITI · Iniciação Tecnológica · Centro Universitário Martha Falcão Wyden · ago/2026 – jul/2027</p>
             </div>
 
             <div class="research-grid">
                 <div class="research-text">
-                    <p class="rs-lead">
+                    <p class="rs-lead" data-en="Civil society organizations in Manaus handle sensitive data about people in vulnerable situations, are subject to the LGPD and rarely have budget for commercial security tools.">
                         Organizações da sociedade civil de Manaus lidam com dados sensíveis de pessoas em situação de vulnerabilidade, estão sujeitas à LGPD e raramente têm orçamento para ferramentas de segurança comerciais.
                     </p>
-                    <p>
+                    <p data-en="The research proposes an <strong>open source, low-cost prototype</strong> that combines two fronts: an <strong>Autoencoder</strong> that learns the normal behavior of network traffic and flags deviations (possible exfiltration), and an <strong>NLP</strong> module that identifies personal data by context, going beyond simple rules such as &quot;look for a CPF number&quot;.">
                         A pesquisa propõe um <strong>protótipo open source e de baixo custo</strong> que combina duas frentes: um <strong>Autoencoder</strong> que aprende o comportamento normal do tráfego e sinaliza desvios (possíveis exfiltrações), e um módulo de <strong>NLP</strong> que identifica dados pessoais pelo contexto, indo além de regras simples como "procurar um CPF".
                     </p>
-                    <p>
+                    <p data-en="The evaluation compares traditional anomaly detection models with deep learning, measuring precision, recall and latency on local hardware.">
                         A avaliação compara modelos tradicionais de detecção de anomalias com deep learning, medindo precisão, recall e latência em hardware local.
                     </p>
                     <div class="rs-meta">
-                        <span>orientação: Profª Danielle Lima de Figueiredo</span>
-                        <span>linha: Segurança Cibernética</span>
+                        <span data-en="advisor: Prof. Danielle Lima de Figueiredo">orientação: Profª Danielle Lima de Figueiredo</span>
+                        <span data-en="research line: Cybersecurity">linha: Segurança Cibernética</span>
                     </div>
                     <div class="proj-links rs-links">
-                        <a href="https://github.com/JorgeVieirah/pibiti-pibid-osc" target="_blank" rel="noopener">↗ repositório</a>
+                        <a href="https://github.com/JorgeVieirah/pibiti-pibid-osc" target="_blank" rel="noopener" data-en="↗ repository">↗ repositório</a>
                     </div>
                 </div>
 
@@ -233,37 +264,37 @@
                     </div>
                     <div class="pipeline-body">
                         <div class="lane">
-                            <div class="lane-label">tráfego de rede</div>
+                            <div class="lane-label" data-en="network traffic">tráfego de rede</div>
                             <div class="lane-steps">
                                 <span class="step">.pcap</span><span class="arrow">→</span>
                                 <span class="step">scapy · features</span><span class="arrow">→</span>
                                 <span class="step violet">autoencoder</span><span class="arrow">→</span>
-                                <span class="step">score de anomalia</span>
+                                <span class="step" data-en="anomaly score">score de anomalia</span>
                             </div>
                         </div>
                         <div class="lane">
-                            <div class="lane-label">conteúdo</div>
+                            <div class="lane-label" data-en="content">conteúdo</div>
                             <div class="lane-steps">
-                                <span class="step">payload / texto</span><span class="arrow">→</span>
+                                <span class="step" data-en="payload / text">payload / texto</span><span class="arrow">→</span>
                                 <span class="step">regex</span><span class="arrow">+</span>
                                 <span class="step violet">NLP (BERTimbau)</span><span class="arrow">→</span>
-                                <span class="step">dados pessoais</span>
+                                <span class="step" data-en="personal data">dados pessoais</span>
                             </div>
                         </div>
                         <div class="lane merge">
                             <span class="arrow">↘ ↙</span>
-                            <span class="step alert">alerta de possível exfiltração (LGPD)</span>
+                            <span class="step alert" data-en="possible exfiltration alert (LGPD)">alerta de possível exfiltração (LGPD)</span>
                         </div>
 
                         <div class="roadmap">
-                            <div class="roadmap-title"># cronograma</div>
+                            <div class="roadmap-title" data-en="# timeline"># cronograma</div>
                             <ol class="roadmap-steps">
-                                <li class="done"><span>ago–set</span>laboratório e revisão</li>
-                                <li class="current"><span>out–nov</span>dados &amp; NLP</li>
-                                <li><span>dez–jan</span>autoencoder</li>
-                                <li><span>fev–mar</span>testes de exfiltração</li>
-                                <li><span>abr–mai</span>análise comparativa</li>
-                                <li><span>jun–jul</span>relatório final</li>
+                                <li class="done"><span data-en="aug–sep">ago–set</span><span data-en="lab and literature review">laboratório e revisão</span></li>
+                                <li class="current"><span data-en="oct–nov">out–nov</span><span data-en="data &amp; NLP">dados &amp; NLP</span></li>
+                                <li><span data-en="dec–jan">dez–jan</span>autoencoder</li>
+                                <li><span data-en="feb–mar">fev–mar</span><span data-en="exfiltration tests">testes de exfiltração</span></li>
+                                <li><span data-en="apr–may">abr–mai</span><span data-en="comparative analysis">análise comparativa</span></li>
+                                <li><span data-en="jun–jul">jun–jul</span><span data-en="final report">relatório final</span></li>
                             </ol>
                         </div>
                     </div>
@@ -276,26 +307,26 @@
     <section id="experiencia" class="reveal">
         <div class="wrap">
             <div class="sec-head">
-                <span class="sec-tag">03 — trajetória</span>
-                <h2 class="sec-title">Experiência &amp; Formação</h2>
-                <p class="sec-sub">cat history.log — operações corporativas, pesquisa e formação.</p>
+                <span class="sec-tag" data-en="03 — career">03 — trajetória</span>
+                <h2 class="sec-title" data-en="Experience &amp; Education">Experiência &amp; Formação</h2>
+                <p class="sec-sub" data-en="cat history.log — corporate operations, research and education.">cat history.log — operações corporativas, pesquisa e formação.</p>
             </div>
 
-            <div class="timeline">
+            <div class="timeline stagger">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">[Out/2024] – Atualmente</span>
-                        <h3 class="timeline-title">Assistente de Infraestrutura</h3>
-                        <div class="timeline-meta">Delly's | Suporte em nível nacional &amp; unidade Região Norte</div>
-                        <p>
+                        <span class="timeline-date" data-en="[Oct/2024] – Present">[Out/2024] – Atualmente</span>
+                        <h3 class="timeline-title" data-en="IT Infrastructure Assistant">Assistente de Infraestrutura</h3>
+                        <div class="timeline-meta" data-en="Delly's | Nationwide support &amp; North Region unit">Delly's | Suporte em nível nacional &amp; unidade Região Norte</div>
+                        <p data-en="The only on-site support for the North Region unit, also handling corporate requests nationwide.">
                             Único ponto de suporte local da unidade da Região Norte, atendendo também demandas corporativas em nível nacional.
                         </p>
                         <ul class="tl-list">
-                            <li><strong>Identidade e acessos (IAM):</strong> administração de usuários, grupos e permissões no Active Directory, com foco em conformidade e privilégio mínimo.</li>
-                            <li><strong>Redes e conectividade:</strong> monitoramento de redes e servidores locais com Cisco Meraki e suporte a clientes VPN (FortiClient).</li>
-                            <li><strong>Endpoints e ativos:</strong> deploy padronizado de desktops, notebooks e dispositivos móveis com solução de UEM e gestão do inventário de hardware.</li>
-                            <li><strong>Automação:</strong> ferramentas internas em Python para gestão de dispositivos e geração de termos de responsabilidade.</li>
+                            <li data-en="<strong>Identity and access (IAM):</strong> managing users, groups and permissions in Active Directory, with a focus on compliance and least privilege."><strong>Identidade e acessos (IAM):</strong> administração de usuários, grupos e permissões no Active Directory, com foco em conformidade e privilégio mínimo.</li>
+                            <li data-en="<strong>Networking:</strong> monitoring local networks and servers with Cisco Meraki and supporting VPN clients (FortiClient)."><strong>Redes e conectividade:</strong> monitoramento de redes e servidores locais com Cisco Meraki e suporte a clientes VPN (FortiClient).</li>
+                            <li data-en="<strong>Endpoints and assets:</strong> standardized deployment of desktops, notebooks and mobile devices with a UEM solution, plus hardware inventory management."><strong>Endpoints e ativos:</strong> deploy padronizado de desktops, notebooks e dispositivos móveis com solução de UEM e gestão do inventário de hardware.</li>
+                            <li data-en="<strong>Automation:</strong> internal Python tools for device management and for generating equipment responsibility forms."><strong>Automação:</strong> ferramentas internas em Python para gestão de dispositivos e geração de termos de responsabilidade.</li>
                         </ul>
                     </div>
                 </div>
@@ -303,10 +334,10 @@
                 <div class="timeline-item">
                     <div class="timeline-dot violet"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">[Ago/2026] – Atualmente</span>
-                        <h3 class="timeline-title">Pesquisador de Iniciação Tecnológica (PIBITI)</h3>
-                        <div class="timeline-meta">Centro Universitário Martha Falcão Wyden | Segurança Cibernética</div>
-                        <p>
+                        <span class="timeline-date" data-en="[Aug/2026] – Present">[Ago/2026] – Atualmente</span>
+                        <h3 class="timeline-title" data-en="Technology Research Student (PIBITI)">Pesquisador de Iniciação Tecnológica (PIBITI)</h3>
+                        <div class="timeline-meta" data-en="Centro Universitário Martha Falcão Wyden | Cybersecurity">Centro Universitário Martha Falcão Wyden | Segurança Cibernética</div>
+                        <p data-en="Building an AI prototype (Autoencoders + NLP) to detect exfiltration and classify sensitive data in civil society organizations. <a class='inline-link' href='#pesquisa'>see details ↑</a>">
                             Desenvolvimento de protótipo de IA (Autoencoders + NLP) para detecção de exfiltração e classificação de dados sensíveis em organizações da sociedade civil. <a class="inline-link" href="#pesquisa">ver detalhes ↑</a>
                         </p>
                     </div>
@@ -315,13 +346,13 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">[Mai/2023] – [Set/2024]</span>
-                        <h3 class="timeline-title">Aprendiz de TI</h3>
-                        <div class="timeline-meta">Grupo 4 Mares | Suporte técnico e Help Desk</div>
+                        <span class="timeline-date" data-en="[May/2023] – [Sep/2024]">[Mai/2023] – [Set/2024]</span>
+                        <h3 class="timeline-title" data-en="IT Apprentice">Aprendiz de TI</h3>
+                        <div class="timeline-meta" data-en="Grupo 4 Mares | Technical support and Help Desk">Grupo 4 Mares | Suporte técnico e Help Desk</div>
                         <ul class="tl-list">
-                            <li><strong>Help Desk:</strong> gestão de chamados via ITSM (Milvus), com triagem, documentação e escalonamento para N2/N3.</li>
-                            <li><strong>Controle de acessos (ERP Winthor):</strong> gerenciamento de permissões aplicando o princípio do privilégio mínimo.</li>
-                            <li><strong>Suporte e inventário:</strong> resolução de incidentes de hardware e software e apoio no controle de ativos móveis e linhas corporativas.</li>
+                            <li data-en="<strong>Help Desk:</strong> ticket management in an ITSM tool (Milvus), with triage, documentation and escalation to L2/L3."><strong>Help Desk:</strong> gestão de chamados via ITSM (Milvus), com triagem, documentação e escalonamento para N2/N3.</li>
+                            <li data-en="<strong>Access control (Winthor ERP):</strong> permission management applying the principle of least privilege."><strong>Controle de acessos (ERP Winthor):</strong> gerenciamento de permissões aplicando o princípio do privilégio mínimo.</li>
+                            <li data-en="<strong>Support and inventory:</strong> hardware and software incident resolution and support for mobile asset and corporate line inventory."><strong>Suporte e inventário:</strong> resolução de incidentes de hardware e software e apoio no controle de ativos móveis e linhas corporativas.</li>
                         </ul>
                     </div>
                 </div>
@@ -329,10 +360,10 @@
                 <div class="timeline-item">
                     <div class="timeline-dot amber"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">[Mar/2024] – [Dez/2026]</span>
-                        <h3 class="timeline-title">Análise e Desenvolvimento de Sistemas</h3>
-                        <div class="timeline-meta">Centro Universitário Martha Falcão Wyden | Graduação Tecnológica</div>
-                        <p>
+                        <span class="timeline-date" data-en="[Mar/2024] – [Dec/2026]">[Mar/2024] – [Dez/2026]</span>
+                        <h3 class="timeline-title" data-en="Systems Analysis and Development">Análise e Desenvolvimento de Sistemas</h3>
+                        <div class="timeline-meta" data-en="Centro Universitário Martha Falcão Wyden | Technology Degree">Centro Universitário Martha Falcão Wyden | Graduação Tecnológica</div>
+                        <p data-en="Foundations in logic, software engineering and databases, applied to Python automation for infrastructure and to security projects.">
                             Base em lógica, engenharia de software e banco de dados, aplicada no desenvolvimento de automações em Python para infraestrutura e de projetos de segurança.
                         </p>
                     </div>
@@ -345,40 +376,40 @@
     <section id="projetos" class="reveal">
         <div class="wrap">
             <div class="sec-head">
-                <span class="sec-tag">04 — repositório</span>
-                <h2 class="sec-title">Projetos</h2>
-                <p class="sec-sub">ls -la ./projetos — segurança, IA e automação de infraestrutura.</p>
+                <span class="sec-tag" data-en="04 — repository">04 — repositório</span>
+                <h2 class="sec-title" data-en="Projects">Projetos</h2>
+                <p class="sec-sub" data-en="ls -la ./projects — security, AI and infrastructure automation.">ls -la ./projetos — segurança, IA e automação de infraestrutura.</p>
             </div>
 
             <div class="projects-toolbar">
-                <button class="filter-btn active" data-filter="all">todos</button>
-                <button class="filter-btn" data-filter="ia">ia</button>
-                <button class="filter-btn" data-filter="seguranca">segurança</button>
-                <button class="filter-btn" data-filter="automacao">automação</button>
+                <button class="filter-btn active" data-filter="all" data-en="all">todos</button>
+                <button class="filter-btn" data-filter="ia" data-en="ai">ia</button>
+                <button class="filter-btn" data-filter="seguranca" data-en="security">segurança</button>
+                <button class="filter-btn" data-filter="automacao" data-en="automation">automação</button>
             </div>
 
-            <div class="proj-grid" id="projGrid">
+            <div class="proj-grid stagger" id="projGrid">
 
-                <article class="proj-card featured" data-cat="ia seguranca">
+                <article class="proj-card featured" data-cat="ia seguranca" data-tone="violet">
                     <div class="proj-termbar">
                         <span class="pdot" style="background:#ff5f57;"></span>
                         <span class="pdot" style="background:#febc2e;"></span>
                         <span class="pdot" style="background:#28c840;"></span>
                         <span class="path">pibiti-pibid-osc.git</span>
-                        <span class="badge violet">pesquisa</span>
+                        <span class="badge violet" data-en="research">pesquisa</span>
                     </div>
                     <div class="proj-body">
-                        <h3>Detecção de Exfiltração com IA (PIBITI)</h3>
-                        <p>Protótipo que extrai features de tráfego (.pcap) com Scapy para um Autoencoder e identifica dados pessoais em payloads com regex + NLP (BERTimbau), com foco em LGPD para ONGs.</p>
+                        <h3 data-en="AI-based Exfiltration Detection (PIBITI)">Detecção de Exfiltração com IA (PIBITI)</h3>
+                        <p data-en="Prototype that extracts traffic features (.pcap) with Scapy for an Autoencoder and identifies personal data in payloads with regex + NLP (BERTimbau), focused on LGPD compliance for NGOs.">Protótipo que extrai features de tráfego (.pcap) com Scapy para um Autoencoder e identifica dados pessoais em payloads com regex + NLP (BERTimbau), com foco em LGPD para ONGs.</p>
                         <div class="proj-stack"><span>Python</span><span>PyTorch</span><span>Transformers</span><span>Scapy</span></div>
                         <div class="proj-links">
                             <a href="https://github.com/JorgeVieirah/pibiti-pibid-osc" target="_blank" rel="noopener">↗ GitHub</a>
-                            <span class="wip">em andamento</span>
+                            <span class="wip" data-en="in progress">em andamento</span>
                         </div>
                     </div>
                 </article>
 
-                <article class="proj-card" data-cat="automacao">
+                <article class="proj-card" data-cat="automacao" data-tone="green">
                     <div class="proj-termbar">
                         <span class="pdot" style="background:#ff5f57;"></span>
                         <span class="pdot" style="background:#febc2e;"></span>
@@ -386,8 +417,8 @@
                         <span class="path">gestao-dispositivos.git</span>
                     </div>
                     <div class="proj-body">
-                        <h3>Gestão de Dispositivos (ITAM)</h3>
-                        <p>Sistema para inventário de aparelhos corporativos: API REST em Flask + SQLite, painel web e app mobile em React Native (Expo). Registra saídas e devoluções e gera os termos de responsabilidade em .docx.</p>
+                        <h3 data-en="Device Management (ITAM)">Gestão de Dispositivos (ITAM)</h3>
+                        <p data-en="Inventory system for corporate devices: Flask + SQLite REST API, web dashboard and React Native (Expo) mobile app. Tracks check-outs and returns and generates responsibility forms in .docx.">Sistema para inventário de aparelhos corporativos: API REST em Flask + SQLite, painel web e app mobile em React Native (Expo). Registra saídas e devoluções e gera os termos de responsabilidade em .docx.</p>
                         <div class="proj-stack"><span>Python</span><span>Flask</span><span>SQLite</span><span>React Native</span></div>
                         <div class="proj-links">
                             <a href="https://github.com/JorgeVieirah/gestao-dispositivos" target="_blank" rel="noopener">↗ GitHub</a>
@@ -395,7 +426,7 @@
                     </div>
                 </article>
 
-                <article class="proj-card" data-cat="seguranca">
+                <article class="proj-card" data-cat="seguranca" data-tone="amber">
                     <div class="proj-termbar">
                         <span class="pdot" style="background:#ff5f57;"></span>
                         <span class="pdot" style="background:#febc2e;"></span>
@@ -403,8 +434,8 @@
                         <span class="path">sql-injection-detector.git</span>
                     </div>
                     <div class="proj-body">
-                        <h3>Simulador de SQL Injection</h3>
-                        <p>Laboratório de ataque e defesa: um script dispara payloads clássicos de SQL Injection contra um login em Flask protegido por consultas parametrizadas, e uma camada de detecção registra as tentativas suspeitas em log.</p>
+                        <h3 data-en="SQL Injection Lab">Simulador de SQL Injection</h3>
+                        <p data-en="Attack and defense lab: a script fires classic SQL Injection payloads at a Flask login protected by parameterized queries, while a detection layer logs the suspicious attempts.">Laboratório de ataque e defesa: um script dispara payloads clássicos de SQL Injection contra um login em Flask protegido por consultas parametrizadas, e uma camada de detecção registra as tentativas suspeitas em log.</p>
                         <div class="proj-stack"><span>Python</span><span>Flask</span><span>SQLite</span><span>Logging</span></div>
                         <div class="proj-links">
                             <a href="https://github.com/JorgeVieirah/Simulador-de-SQL-Injection-Detector" target="_blank" rel="noopener">↗ GitHub</a>
@@ -412,7 +443,7 @@
                     </div>
                 </article>
 
-                <article class="proj-card" data-cat="automacao">
+                <article class="proj-card" data-cat="automacao" data-tone="green">
                     <div class="proj-termbar">
                         <span class="pdot" style="background:#ff5f57;"></span>
                         <span class="pdot" style="background:#febc2e;"></span>
@@ -420,8 +451,8 @@
                         <span class="path">auto-termo-responsabilidade.git</span>
                     </div>
                     <div class="proj-body">
-                        <h3>Gerador de Termos de Responsabilidade</h3>
-                        <p>Automação em Python que preenche modelos .docx de termos de uso de celulares, notebooks e periféricos a partir dos dados do colaborador, eliminando o preenchimento manual.</p>
+                        <h3 data-en="Responsibility Form Generator">Gerador de Termos de Responsabilidade</h3>
+                        <p data-en="Python automation that fills .docx templates of equipment use forms (phones, notebooks and peripherals) from employee data, removing manual work.">Automação em Python que preenche modelos .docx de termos de uso de celulares, notebooks e periféricos a partir dos dados do colaborador, eliminando o preenchimento manual.</p>
                         <div class="proj-stack"><span>Python</span><span>python-docx</span><span>CLI</span></div>
                         <div class="proj-links">
                             <a href="https://github.com/JorgeVieirah/Auto-Termo-Responsabilidade" target="_blank" rel="noopener">↗ GitHub</a>
@@ -429,7 +460,7 @@
                     </div>
                 </article>
 
-                <article class="proj-card" data-cat="ia">
+                <article class="proj-card" data-cat="ia" data-tone="violet">
                     <div class="proj-termbar">
                         <span class="pdot" style="background:#ff5f57;"></span>
                         <span class="pdot" style="background:#febc2e;"></span>
@@ -438,11 +469,11 @@
                         <span class="badge">lab</span>
                     </div>
                     <div class="proj-body">
-                        <h3>Orquestração de LLMs locais</h3>
-                        <p>Laboratório pessoal com LangGraph, LiteLLM e Ollama para orquestrar modelos rodando localmente, com cache, verificação de respostas e foco em economia de tokens.</p>
+                        <h3 data-en="Local LLM Orchestration">Orquestração de LLMs locais</h3>
+                        <p data-en="Personal lab with LangGraph, LiteLLM and Ollama to orchestrate locally running models, with caching, answer verification and a focus on saving tokens.">Laboratório pessoal com LangGraph, LiteLLM e Ollama para orquestrar modelos rodando localmente, com cache, verificação de respostas e foco em economia de tokens.</p>
                         <div class="proj-stack"><span>Python</span><span>LangGraph</span><span>LiteLLM</span><span>Ollama</span></div>
                         <div class="proj-links">
-                            <span class="wip">em desenvolvimento</span>
+                            <span class="wip" data-en="in development">em desenvolvimento</span>
                         </div>
                     </div>
                 </article>
@@ -457,22 +488,22 @@
     <section class="certs reveal" id="certificacoes">
         <div class="wrap">
             <div class="sec-head">
-                <span class="sec-tag">05 — credenciais</span>
-                <h2 class="sec-title">Certificações</h2>
-                <p class="sec-sub">cat certificados.log — trilhas concluídas em segurança e redes.</p>
+                <span class="sec-tag" data-en="05 — credentials">05 — credenciais</span>
+                <h2 class="sec-title" data-en="Certifications">Certificações</h2>
+                <p class="sec-sub" data-en="cat certificates.log — completed tracks in security and networking.">cat certificados.log — trilhas concluídas em segurança e redes.</p>
             </div>
 
-            <div class="cert-grid">
+            <div class="cert-grid stagger">
                 <div class="cert-card">
                     <div class="cert-top">
                         <div class="cert-badge">
                             <img src="assets/img/google-cyber.png" alt="Insígnia Google Cybersecurity">
                         </div>
-                        <span class="cert-status">verificado</span>
+                        <span class="cert-status" data-en="verified">verificado</span>
                     </div>
                     <h3>Google Cybersecurity Professional Certificate</h3>
                     <div class="cert-issuer">Google — Coursera</div>
-                    <div class="cert-meta"><span>certificado profissional</span><span>2026</span></div>
+                    <div class="cert-meta"><span data-en="professional certificate">certificado profissional</span><span>2026</span></div>
                 </div>
 
                 <div class="cert-card">
@@ -480,11 +511,11 @@
                         <div class="cert-badge">
                             <img src="assets/img/cisco-hacker.png" alt="Insígnia Cisco Ethical Hacker">
                         </div>
-                        <span class="cert-status">verificado</span>
+                        <span class="cert-status" data-en="verified">verificado</span>
                     </div>
                     <h3>Ethical Hacker</h3>
                     <div class="cert-issuer">Cisco Networking Academy</div>
-                    <div class="cert-meta"><span>insígnia + certificado</span><span>2026</span></div>
+                    <div class="cert-meta"><span data-en="badge + certificate">insígnia + certificado</span><span>2026</span></div>
                 </div>
 
                 <div class="cert-card">
@@ -492,11 +523,11 @@
                         <div class="cert-badge">
                             <img src="assets/img/cisco-intro.png" alt="Insígnia Cisco Introduction to Cybersecurity">
                         </div>
-                        <span class="cert-status">verificado</span>
+                        <span class="cert-status" data-en="verified">verificado</span>
                     </div>
                     <h3>Introduction to Cybersecurity</h3>
                     <div class="cert-issuer">Cisco Networking Academy</div>
-                    <div class="cert-meta"><span>certificado</span><span>2026</span></div>
+                    <div class="cert-meta"><span data-en="certificate">certificado</span><span>2026</span></div>
                 </div>
             </div>
         </div>
@@ -506,25 +537,25 @@
     <section class="term-section reveal" id="terminal">
         <div class="wrap">
             <div class="sec-head" style="text-align:center;">
-                <span class="sec-tag">06 — interativo</span>
-                <h2 class="sec-title">Terminal ao vivo</h2>
-                <p class="sec-sub" style="margin:10px auto 0;">Digite comandos para explorar mais sobre mim. Comece com <code style="color:var(--green-dim);">help</code>.</p>
+                <span class="sec-tag" data-en="06 — interactive">06 — interativo</span>
+                <h2 class="sec-title" data-en="Live terminal">Terminal ao vivo</h2>
+                <p class="sec-sub" style="margin:10px auto 0;" data-en="Type commands to explore more about me. Start with <code style='color:var(--green-dim);'>help</code>.">Digite comandos para explorar mais sobre mim. Comece com <code style="color:var(--green-dim);">help</code>.</p>
             </div>
 
             <div class="live-term">
                 <div class="live-term-bar">
                     <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-                    <span class="lt-title">visitante@portfolio</span>
+                    <span class="lt-title" data-en="visitor@portfolio">visitante@portfolio</span>
                 </div>
                 <div class="live-term-body" id="termBody">
-                    <div class="ln"><span class="p">visitante@portfolio:~$</span> <span class="out">Bem-vindo(a). Digite <span class="ok">help</span> para ver os comandos disponíveis.</span></div>
+                    <div class="ln"><span class="p" data-en="visitor@portfolio:~$">visitante@portfolio:~$</span> <span class="out" data-en="Welcome. Type <span class='ok'>help</span> to see the available commands.">Bem-vindo(a). Digite <span class="ok">help</span> para ver os comandos disponíveis.</span></div>
                 </div>
                 <form class="live-term-form" id="termForm">
                     <span class="p">$</span>
-                    <input type="text" id="termInput" autocomplete="off" maxlength="80" placeholder="digite um comando..." aria-label="Campo de comando do terminal">
+                    <input type="text" id="termInput" autocomplete="off" maxlength="80" placeholder="digite um comando..." data-en-placeholder="type a command..." aria-label="Campo de comando do terminal">
                 </form>
             </div>
-            <p class="term-hint">tente: <code>help</code> · <code>whoami</code> · <code>pesquisa</code> · <code>skills</code> · <code>neofetch</code> · <code>clear</code></p>
+            <p class="term-hint"><span data-en="try:">tente:</span> <code>help</code> · <code>whoami</code> · <code>pesquisa</code> · <code>skills</code> · <code>neofetch</code> · <code>clear</code></p>
         </div>
     </section>
 
@@ -532,12 +563,12 @@
     <section id="contato" class="reveal">
         <div class="wrap">
             <div class="sec-head" style="text-align: center;">
-                <span class="sec-tag">07 — conexão</span>
-                <h2 class="sec-title">Contato</h2>
-                <p class="sec-sub" style="margin: 10px auto 0;">Vamos conversar sobre infraestrutura, segurança ou IA aplicada. Escolha um canal:</p>
+                <span class="sec-tag" data-en="07 — connect">07 — conexão</span>
+                <h2 class="sec-title" data-en="Contact">Contato</h2>
+                <p class="sec-sub" style="margin: 10px auto 0;" data-en="Let's talk about infrastructure, security or applied AI. Pick a channel:">Vamos conversar sobre infraestrutura, segurança ou IA aplicada. Escolha um canal:</p>
             </div>
 
-            <div class="contact-grid">
+            <div class="contact-grid stagger">
                 <a class="contact-item" href="mailto:jorgevieirah.contato@gmail.com">
                     <div class="ci-icon">@</div>
                     <div><div class="ci-label">email</div><div class="ci-value">jorgevieirah.contato@gmail.com</div></div>
@@ -552,7 +583,7 @@
                 </a>
                 <div class="contact-item" style="cursor:default;">
                     <div class="ci-icon">⌖</div>
-                    <div><div class="ci-label">localização</div><div class="ci-value">Manaus, AM — Brasil</div></div>
+                    <div><div class="ci-label" data-en="location">localização</div><div class="ci-value">Manaus, AM — Brasil</div></div>
                 </div>
             </div>
         </div>
@@ -561,7 +592,7 @@
     <!-- ======================= FOOTER ======================= -->
     <footer>
         <div class="wrap">
-            <div class="fline"><span class="green">$</span> echo "construído à mão, sem frameworks, servido pelo GitHub Pages"</div>
+            <div class="fline"><span class="green">$</span> <span data-en="echo &quot;hand-built, no frameworks, served by GitHub Pages&quot;">echo "construído à mão, sem frameworks, servido pelo GitHub Pages"</span></div>
             <div class="fline">© <span id="year"></span> Jorge Vieira</div>
         </div>
     </footer>
