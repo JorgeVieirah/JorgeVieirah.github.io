@@ -1084,7 +1084,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px);
 }
 .pt-img { position: absolute; inset: 0; opacity: 0; }
-.pt-layer { position: absolute; inset: 0; background: url("../assets/img/portrait.webp") center bottom / cover no-repeat; }
+.pt-layer { position: absolute; inset: 0; background: url("../assets/img/portrait.webp") center top / cover no-repeat; }
 .pt-layer.r, .pt-layer.c { opacity: 0; mix-blend-mode: screen; }
 .pt-layer.r { filter: drop-shadow(0 0 0 #ff2a55) sepia(1) saturate(8) hue-rotate(-40deg); }
 .pt-layer.c { filter: sepia(1) saturate(8) hue-rotate(140deg); }
