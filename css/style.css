@@ -1023,7 +1023,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 
 /* glitch: palavras que falham e trocam (PT / EN / sinônimos) */
 .glitch, .glitch-name { position: relative; display: inline-block; }
-.glitch.is-glitching, .glitch-name.is-glitching {
+.glitch.is-glitching, .glitch-name.is-glitching, .wglitch.is-glitching {
   text-shadow: 2px 0 var(--red), -2px 0 var(--blue);
   animation: jitter .12s steps(2) infinite;
 }
@@ -1150,3 +1150,6 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   .photo-term .pt-bar i { width: 100%; animation: none !important; }
   .photo-term .pt-layer, .photo-term .pt-scan { animation: none !important; }
 }
+
+.wglitch { display: inline-block; color: var(--green); }
+.wglitch.is-glitching { color: inherit; }

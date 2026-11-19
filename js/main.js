@@ -150,8 +150,8 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* ---------------- Typewriter do hero ---------------- */
 const roles = {
-  pt: ['profissional de infraestrutura de TI', 'pesquisador em IA aplicada à segurança', 'blue team em formação', 'usuário de Arch Linux no dia a dia', 'automatizador de tarefas em Python'],
-  en: ['IT infrastructure professional', 'researcher in AI applied to security', 'blue teamer in the making', 'daily Arch Linux user', 'Python task automator']
+  pt: ['profissional de infraestrutura de TI', 'pesquisador em IA aplicada à segurança', 'estudante de cibersegurança', 'usuário de Arch Linux no dia a dia', 'automatizador de tarefas em Python'],
+  en: ['IT infrastructure professional', 'researcher in AI applied to security', 'cybersecurity student', 'daily Arch Linux user', 'Python task automator']
 };
 const typedEl = document.getElementById('typed-role');
 let rIndex = 0, cIndex = 0, deleting = false;
@@ -317,7 +317,7 @@ const commands = {
   skills: () => `<span class="ok">infra/linux</span> <span class="out">Arch · Fedora · Active Directory · Cisco Meraki · UEM · Git</span><br>
     <span class="warn">${T('segurança', 'security')}</span> <span class="out">Wireshark · Nmap · Suricata · Splunk · Hardening · LGPD</span><br>
     <span class="ia">${T('ia/dados', 'ai/data')}</span> <span class="out">Python · PyTorch · scikit-learn · Transformers · pandas · Scapy</span>`,
-  neofetch: () => `<span class="ok">jorge@arch</span><br><span class="out">OS: Arch Linux x86_64 · Shell: zsh · Role: Infra &amp; SecOps · Research: ${T('IA p/ detecção de exfiltração', 'AI for exfiltration detection')}</span>`,
+  neofetch: () => `<span class="ok">jorge@arch</span><br><span class="out">OS: Arch Linux x86_64 · Shell: zsh · Role: Infra · Security · AI · Research: ${T('IA p/ detecção de exfiltração', 'AI for exfiltration detection')}</span>`,
   certificados: () => `<span class="out">Google Cybersecurity Professional Certificate · Cisco Ethical Hacker · Cisco Introduction to Cybersecurity</span>`,
   projetos: () => goTo('projetos', T('Navegando até ./projetos...', 'Navigating to ./projects...')),
   contato: () => goTo('contato', T('Navegando até ./contato...', 'Navigating to ./contact...')),
@@ -346,11 +346,82 @@ termForm.addEventListener('submit', e => {
   termInput.value = '';
 });
 
+/* ---------------- Glitch ambiente: palavras aleatórias pelo site ----------------
+   De tempos em tempos uma palavra visível de um parágrafo "falha". Se ela tem par
+   no dicionário, troca para o outro idioma e volta; senão, só embaralha e volta. */
+const WORD_PAIRS = [
+  ['infraestrutura','infrastructure'],['segurança','security'],['cibersegurança','cybersecurity'],
+  ['dados','data'],['rede','network'],['redes','networks'],['pesquisa','research'],['modelo','model'],
+  ['modelos','models'],['projeto','project'],['projetos','projects'],['sistema','system'],['sistemas','systems'],
+  ['tráfego','traffic'],['anomalia','anomaly'],['anomalias','anomalies'],['detecção','detection'],
+  ['inteligência','intelligence'],['artificial','artificial'],['aprendizado','learning'],['acesso','access'],
+  ['monitoramento','monitoring'],['automação','automation'],['análise','analysis'],['protótipo','prototype'],
+  ['vazamento','leak'],['exfiltração','exfiltration'],['sensíveis','sensitive'],['pessoais','personal'],
+  ['usuários','users'],['suporte','support'],['laboratório','lab'],['código','code'],['ferramentas','tools'],
+  ['organizações','organizations'],['identidade','identity'],['certificado','certificate']
+];
+const pairMap = new Map();
+WORD_PAIRS.forEach(([pt, en]) => { if (pt !== en) { pairMap.set(pt, en); pairMap.set(en, pt); } });
+const AMBIENT_SEL = 'section p, section li, .pc-val, .nf-val, .sec-sub, .ci-value';
+const AMBIENT_SKIP = '#termBody, .term-live, .glitch, .glitch-name, .wglitch, button, input, script, .roadmap-steps';
+let ambientBusy = false;
+
+function matchCase(src, word) {
+  return src[0] === src[0].toUpperCase() ? word[0].toUpperCase() + word.slice(1) : word;
+}
+function pickAmbientWord() {
+  const blocks = [...document.querySelectorAll(AMBIENT_SEL)].filter(el =>
+    inView(el) && !el.closest(AMBIENT_SKIP) && !(el.closest('.about-text') && typingState !== 'done'));
+  const cands = [];
+  blocks.forEach(b => {
+    const w = document.createTreeWalker(b, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => n.parentElement.closest(AMBIENT_SKIP) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    let n;
+    while ((n = w.nextNode())) {
+      const re = /[A-Za-zÀ-ÿ]{5,}/g; let m;
+      while ((m = re.exec(n.nodeValue))) {
+        const pair = pairMap.get(m[0].toLowerCase());
+        cands.push({ node: n, start: m.index, word: m[0], pair, w: pair ? 4 : 1 });
+      }
+    }
+  });
+  if (!cands.length) return null;
+  // palavras com tradução têm mais chance de serem escolhidas
+  let total = cands.reduce((a, c) => a + c.w, 0), r = Math.random() * total;
+  for (const c of cands) { if ((r -= c.w) < 0) return c; }
+  return cands[0];
+}
+function ambientTick() {
+  if (!ambientBusy && !document.hidden) {
+    const c = pickAmbientWord();
+    if (c) {
+      ambientBusy = true;
+      const after = c.node.splitText(c.start); after.splitText(c.word.length);
+      const span = document.createElement('span');
+      span.className = 'wglitch'; span.setAttribute('aria-hidden', 'true');
+      after.parentNode.replaceChild(span, after); span.textContent = c.word;
+      const restore = () => {
+        const parent = span.parentNode;
+        if (parent) { parent.replaceChild(document.createTextNode(c.word), span); parent.normalize(); }
+        ambientBusy = false;
+      };
+      if (c.pair) {
+        glitchTo(span, matchCase(c.word, c.pair), () => setTimeout(() => glitchTo(span, c.word, restore), 1400));
+      } else {
+        const noise = c.word.replace(/./g, () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)]);
+        glitchTo(span, noise, () => glitchTo(span, c.word, restore));
+      }
+    }
+  }
+  setTimeout(ambientTick, 3500 + Math.random() * 3500);
+}
+
 /* ---------------- Inicialização ---------------- */
 applyLang(lang);
 if (!reduceMotion) {
   setTimeout(glitchTick, 3200);
   setTimeout(nameTick, 4500);
+  setTimeout(ambientTick, 5000);
 }
 
 /* ---------- foto no contato: carrega "falhando" e dá pequenas falhas depois ---------- */
